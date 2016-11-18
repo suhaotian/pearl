@@ -1,0 +1,11 @@
+.pearl-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 73px 0;
+  font-size: 18px;
+  text-align: center;
+  color: #8BABBD;
+  background-color: #0C222E;
+}
