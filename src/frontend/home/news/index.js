@@ -14,11 +14,10 @@ export default class News extends Component {
             </div>
           ))
         }
-
       </div>
     )
   }
-  
+
   getData = () => {
     return [
       {
