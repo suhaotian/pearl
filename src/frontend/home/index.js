@@ -4,6 +4,7 @@ import Banner from './banner'
 import List from './list'
 import News from './news'
 import Footer from '../common/footer'
+import Hr from 'components/Hr'
 
 export default class Home extends Component {
 
@@ -13,6 +14,9 @@ export default class Home extends Component {
         <Header />
         <Banner />
         <List />
+
+        <Hr />
+        
         <News />
         <Footer />
       </div>

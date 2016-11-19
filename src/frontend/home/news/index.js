@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
-import './news.css'
+import styles from './news.css'
 
 export default class News extends Component {
 
   render() {
     return (
-      <div>
-        {
-          this.getData().map(({title, desc}, i) => (
-            <div key={i}>
-              <h3>{title}</h3>
-              <p>{desc}</p>
-            </div>
-          ))
-        }
+      <div className="container">
+        <div className={styles.wrap}>
+          {
+            this.getData().map(({title, desc}, i) => (
+              <div key={i} className={styles.item}>
+                <h3 className={styles.title}>{title}</h3>
+                <p className={styles.text}>{desc}</p>
+              </div>
+            ))
+          }
+        </div>
       </div>
     )
   }

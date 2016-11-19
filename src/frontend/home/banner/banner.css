@@ -1,0 +1,54 @@
+.wrap {
+  margin-top: 12px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.slideWrap {
+  width: 100%;
+  max-width: 990px;
+  margin: auto;
+  overflow-x: hidden;
+}
+
+.card {
+  /*display: inline-block;*/
+  float: left;
+  max-width: 100%;
+  padding: 20px 0;
+  position: relative;
+}
+
+.inner {
+  box-shadow: 0 2px 20px 0 rgba(3, 3, 3, .2); 
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.text {
+  font-family: 'graphik light';
+  font-size: 48px;
+  font-weight: 100;
+  color: #fff;
+  text-transform: capitalize;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  transform: translateY(-50%);
+}
+
+@media screen and (min-width: 961px) {
+  .card {
+    padding: 20px 25px;
+  }
+  .inner {
+    border-radius: 5px;
+  }
+  .slideWrap {
+    overflow: visible;
+  }
+}

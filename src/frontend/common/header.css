@@ -1,0 +1,38 @@
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 0 74px;
+}
+
+.logo {
+  font-family: 'Gothamhtf Bold';
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #222;
+  font-size: 24px;
+  letter-spacing: 10px;
+}
+
+.link_btn {
+  font-size: 18px;
+  color: #117BF9;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  padding: 15px 32px;
+}
+
+.primary_btn {
+  font-family: 'graphik semibold';
+  font-size: 16px;
+  color: #fff;
+  text-transform: capitalize;
+  text-decoration: none;
+  padding: 15px 32px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, .2);
+  background-color: #117BF9;
+  cursor: pointer;
+}

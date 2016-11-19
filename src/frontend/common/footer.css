@@ -1,11 +1,8 @@
-.pearl-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.wrap {
   width: 100%;
-  padding: 73px 0;
+  padding: 62px 0;
   font-size: 18px;
-  text-align: center;
   color: #8BABBD;
+  text-align: center;
   background-color: #0C222E;
 }
