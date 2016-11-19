@@ -26,16 +26,16 @@ hr {
   background-color: #E1E9F2; 
 }
 
-:global(.container {
+:global .container {
   max-width: 960px;
   margin: 0 auto;
   padding: 0 10px;
-})
+}
 
-:global(.responsive {
+:global .responsive {
   width: 100%;
   vertical-align: middle;
-})
+} 
 
 
 /* fonts */
@@ -70,7 +70,7 @@ hr {
     font-style: normal;
 }
 
-/*@font-face {
+@font-face {
     font-family: 'graphik';
     src: url('./fonts/Graphik/Graphik-Regular.eot');
     src: url('./fonts/Graphik/Graphik-Regular.woff') format('woff'),
@@ -78,7 +78,7 @@ hr {
     font-weight: 400;
     font-style: normal;
 }
-*/
+
 
 @font-face {
     font-family: 'graphik semibold';
