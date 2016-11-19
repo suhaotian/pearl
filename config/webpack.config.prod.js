@@ -129,7 +129,7 @@ module.exports = {
         // including CSS. This is confusing and will be removed in Webpack 2:
         // https://github.com/webpack/webpack/issues/283
         // loader: ExtractTextPlugin.extract('style', 'css?importLoaders=1&-autoprefixer!postcss')
-        loader: ExtractTextPlugin.extract('style', 'css??modules&localIdentName=_[hash:base64:5]&importLoaders=1&-autoprefixer!postcss')
+        loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=_[hash:base64:5]&importLoaders=1&-autoprefixer!postcss')
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
       // JSON is not enabled by default in Webpack but both Node and Browserify

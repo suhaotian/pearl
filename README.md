@@ -16,3 +16,11 @@ npm start # Start dev server
 ```shell
 npm run build # Resource will build to ./build folder
 ```
+
+## Deploy
+
+Deploy build to gh-pages
+
+```shell
+npm run deploy
+```

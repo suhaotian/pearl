@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import {
-  BrowserRouter, 
-  Match, 
-  Miss,
-} from 'react-router'
+import Router from 'react-router/HashRouter'
+// import Router from 'react-router/BrowserRouter'
+import Match from 'react-router/Match'
+import Miss from 'react-router/Miss'
+
 import { routes } from './routes'
 
 export default class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div>
           {
             routes.map((item, i) => (
@@ -28,7 +28,7 @@ export default class App extends Component {
             )}
           />
         </div>
-      </BrowserRouter>
+      </Router>
     )
   }
 }
