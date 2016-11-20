@@ -132,6 +132,16 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=_[hash:base64:5]&importLoaders=1&-autoprefixer!postcss')
         // Note: this won't work without `new ExtractTextPlugin()` in `plugins`.
       },
+      {
+        // Do not transform vendor's CSS with CSS-modules
+        // The point is that they remain in global scope.
+        // Since we require these CSS files in our JS or CSS files,
+        // they will be a part of our compilation either way.
+        // So, no need for ExtractTextPlugin here.
+        test: /\.css$/,
+        include: /node_modules/,
+        loaders: ['style-loader', 'css-loader'],
+      },
       // JSON is not enabled by default in Webpack but both Node and Browserify
       // allow it implicitly so we also enable it.
       {

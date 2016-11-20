@@ -7,7 +7,7 @@ export const routes = [
     exactly: true,
     load: asyncLoad((cb) => {
       require.ensure([], (require) => {
-        cb(require('../frontend/home/index'))
+        cb(require('pages/home'))
       })
     }),
   },
@@ -17,7 +17,7 @@ export const routes = [
     exactly: true,
     load: asyncLoad((cb) => {
       require.ensure([], (require) => {
-        cb(require('../frontend/login/index'))
+        cb(require('pages/login'))
       })
     }),
   },

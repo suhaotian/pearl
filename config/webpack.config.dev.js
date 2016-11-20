@@ -118,7 +118,7 @@ module.exports = {
       {
         test: /\.css$/,
         // loader: 'style!css?importLoaders=1!postcss',
-        loader: 'style!css?modules&localIdentName=[name]__[local]___[hash:base64:5]&importLoaders=1!postcss'
+        loader: 'style!css?importLoaders=1&modules&localIdentName=[name]__[local]___[hash:base64:5]!postcss'
       },
       {
         // Do not transform vendor's CSS with CSS-modules

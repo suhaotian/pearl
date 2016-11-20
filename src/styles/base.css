@@ -1,0 +1,19 @@
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  box-sizing: border-box;
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: graphik;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  color: #222;
+  background-color: #FDFDFE;
+}
