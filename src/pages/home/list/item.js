@@ -1,17 +1,16 @@
 import React from 'react'
+import ResponsiveImage from 'components/ResponsiveImage'
+
 import styles from './list.css'
 
 const Item = ({name, desc, price, unit, img}) => (
   <div className={styles.item}>
     <div className={styles.card}>
-      <div>
-        <img 
-          className="responsive"
-          src={img}              
-          alt={name}
-        />
-      </div>
-
+      <ResponsiveImage 
+        ratio="62.5%"
+        src={img}
+        className={'stest'}
+      />
       <div className={styles.bd}>
         <div>
           <h3 className={styles.name}>{name}</h3>

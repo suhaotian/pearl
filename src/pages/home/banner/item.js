@@ -1,4 +1,5 @@
 import React from 'react'
+// import ResponsiveImage from 'components/ResponsiveImage'
 import styles from './banner.css'
 
 const BannerItem = ({img, desc}) => (
@@ -6,13 +7,6 @@ const BannerItem = ({img, desc}) => (
     className={styles.inner} 
     style={{backgroundImage: `url(${img})`}}
   > 
-{/* 
-    <img 
-      src={img} 
-      alt={desc} 
-      className="responsive" 
-    />
-*/}
     <p className={styles.text}>
       {desc}
     </p>
@@ -20,3 +14,14 @@ const BannerItem = ({img, desc}) => (
 )
 
 export default BannerItem
+
+
+/*
+  <div className={styles.inner} >
+    <ResponsiveImage src={img} ratio="42.6%">
+      <p className={styles.text}>
+        {desc}
+      </p>
+    </ResponsiveImage>    
+  </div>
+ */

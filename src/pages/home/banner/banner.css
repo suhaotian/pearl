@@ -23,10 +23,17 @@
   box-shadow: 0 2px 20px 0 rgba(3, 3, 3, .2); 
   border-radius: 0;
   overflow: hidden;
-  height: 400px;
+  height: 300px;
   background-size: cover;
   background-position: center center;
 }
+
+/*.inner {
+  box-shadow: 0 2px 20px 0 rgba(3, 3, 3, .2); 
+  border-radius: 0;
+  overflow: hidden;
+}
+*/
 
 .text {
   font-family: 'graphik light';
@@ -51,6 +58,7 @@
   }
   .inner {
     border-radius: 5px;
+    height: 400px;
   }
   .slideWrap {
     overflow: visible;
