@@ -1,24 +1,16 @@
-import asyncLoad from './asyncLoad'
+import { asyncLoadHOF } from './asyncLoad'
 
 export const routes = [
   {
     name: 'cool store',
     path: '/',
     exactly: true,
-    load: asyncLoad((cb) => {
-      require.ensure([], (require) => {
-        cb(require('pages/home'))
-      })
-    }),
+    load: asyncLoadHOF(require('pages/home')),
   },
   {
     name: 'login',
     path: '/login',
     exactly: true,
-    load: asyncLoad((cb) => {
-      require.ensure([], (require) => {
-        cb(require('pages/login'))
-      })
-    }),
+    load: asyncLoadHOF(require('pages/login')),
   },
 ]

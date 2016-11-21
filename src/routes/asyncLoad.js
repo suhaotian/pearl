@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-export default function asyncLoad(cb) {
+export function asyncLoad(cb) {
   return class AsyncComponent extends Component {
     state = { component: null }
 
@@ -22,3 +22,12 @@ export default function asyncLoad(cb) {
     }
   }
 }
+
+export function asyncLoadHOF(component) {  // HOF => High Order Function
+  return asyncLoad((cb) => {
+    require.ensure([], (require) => {
+      cb(component)
+    })
+  })
+}
+
