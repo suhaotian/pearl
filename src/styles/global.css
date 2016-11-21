@@ -8,3 +8,8 @@
   width: 100%;
   vertical-align: middle;
 }
+
+:global .mobile-page {
+  max-width: 640px;
+  margin: auto;
+}
