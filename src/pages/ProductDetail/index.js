@@ -4,6 +4,7 @@ import Description from './Description'
 import Hr from 'components/Hr'
 import styles from './index.css'
 
+
 export default class ProductDetail extends Component {
   componentDidMount() {
     document.body.scrollTop = 0
@@ -51,13 +52,11 @@ export default class ProductDetail extends Component {
         <div className="page-padding">
           <div className={styles.title}>Number of boxes</div>
           <div className={styles.add_sub_wrap}>
-            <div className={styles.add}>
-              <img src={require('./sub.svg')} />
-            </div>
+            <button className={styles.add}>
+            </button>
             <input className={styles.input} />
-            <div className={styles.sub}>
-              <img src={require('./plus.svg')} />
-            </div>
+            <button className={styles.sub}>
+            </button>
           </div>
         </div>
 

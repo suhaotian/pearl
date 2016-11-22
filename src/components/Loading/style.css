@@ -1,19 +1,40 @@
 .wrap {
-  
+  text-align: center; 
 }
 
 .dot {
-  
+  margin-right: 4px;
+  border-radius: 100%;
+  display: inline-block;
+  animation-name: a1;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+  vertical-align: middle;
 }
 
 .dot_1 {
-
+  composes: dot;
 }
 
 .dot_2 {
-
+  composes: dot;
+  animation-delay: -.15s;
 }
 
-.dot_3 {
 
+.dot_3 {
+  composes: dot;  
+  animation-delay: -.3s;
+}
+
+@keyframes a1 {
+  0%, 80%, 100% {
+    opacity: 0;
+  }
+
+  30%, 50% {
+    opacity: 1;
+  }
 }

@@ -55,7 +55,7 @@ export default class ProductEdit extends Component {
         </div>
 
         <div className={styles.footer}>
-          <div className={styles.btn}>Save and preview changes</div>
+          <button className={styles.btn}>Save and preview changes</button>
         </div>
 
         <div style={{height: 120}} />

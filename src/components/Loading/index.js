@@ -1,12 +1,26 @@
 import React from 'react'
 import styles from './style.css'
 
-const Loading = (props) => (
+const Loading = ({size, color, style, ...other}) => (
   <div className={styles.wrap}>
-    <div className={styles.dot_1} />
-    <div className={styles.dot_2} />
-    <div className={styles.dot_3} />
+    {
+      [1,2,3].map((item) => (
+        <div
+          key={item} 
+          className={styles[`dot_${item}`]} 
+          style={{
+            width: size, height: size, 
+            backgroundColor: color, ...style
+          }}
+        />
+      ))
+    }
   </div>                           
 )
+
+Loading.defaultProps = {
+  size: 6,
+  color: '#117bf9',
+}
 
 export default Loading
