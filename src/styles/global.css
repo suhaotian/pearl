@@ -13,3 +13,7 @@
   max-width: 640px;
   margin: auto;
 }
+
+:global .page-padding {
+  padding: 0 20px;
+}

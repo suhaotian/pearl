@@ -67,6 +67,7 @@
   padding: 13px 20px;
   background-color: #f3f4f8;
   text-align: right;
+  white-space: nowrap;
 }
 .price {
   font-family: 'graphik light';
@@ -78,8 +79,9 @@
   border: none;
   color: #fff;
   margin-left: 20px;
+  line-height: 1;
   border-radius: 2px;
   font-size: 18px;
   font-weight: 600;
-  padding: 20px;
+  padding: 18.5px 20px;
 }

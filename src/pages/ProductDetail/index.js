@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Banner from './Banner'
 import Description from './Description'
+import Hr from 'components/Hr'
 import styles from './index.css'
 
 export default class ProductDetail extends Component {
@@ -10,7 +11,8 @@ export default class ProductDetail extends Component {
       <div className="mobile-page">
         <Banner />
         <Description />
-        <div>
+        <Hr style={{backgroundColor: '#eee'}} />
+        <div className="page-padding">
           <div className={styles.title}>Varieties</div>
           <div className={styles.item}>
             1.00mm - 1.25mm
@@ -26,7 +28,7 @@ export default class ProductDetail extends Component {
           </div>
         </div>
 
-        <div>
+        <div className="page-padding">
           <div className={styles.title}>packaging</div>
           <div className={styles.item + ' ' + styles.active}>
             Wax cardbox box containing
@@ -40,7 +42,7 @@ export default class ProductDetail extends Component {
           </div>         
         </div>
 
-        <div>
+        <div className="page-padding">
           <div className={styles.title}>Number of boxes</div>
           <div className={styles.add_sub_wrap}>
             <div className={styles.add}>-</div>
@@ -57,7 +59,7 @@ export default class ProductDetail extends Component {
 
         {/*<pre>{JSON.stringify(this.props, null, 2)}</pre> */}
 
-        <div style={{height: 80}} />
+        <div style={{height: 100}} />
       </div>
     )
 

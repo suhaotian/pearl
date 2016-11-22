@@ -10,7 +10,7 @@ const ResponsiveImage = ({
   >
     <div
       className={styles.img}
-      style={{backgroundImage: `url(${src})`}} 
+      style={src ? {backgroundImage: `url(${src})`} : {}} 
     >
       {children}
     </div>
