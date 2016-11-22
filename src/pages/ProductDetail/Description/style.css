@@ -7,14 +7,21 @@
 .where {
   font-family: 'graphik light';
   font-size: 14px;
+  margin-bottom: 31.5px;
 }
 
 .text {
   font-family: 'graphik light';
   font-size: 18px;
-  line-height: 1.33;
+  margin: 0;
+  padding: 24px 0 28px;
+  line-height: 1.34;
 }
 
 .readMore {
   color: #117bf9;
 }
+/*
+.padding {
+  padding: 30px 20px;
+}*/

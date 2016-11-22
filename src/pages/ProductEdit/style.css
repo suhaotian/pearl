@@ -1,11 +1,49 @@
+.head {
+  position: relative;
+  font-size: 18px;
+  padding: 60px 20px 22px;
+  text-align: center;
+  line-height: 1;
+  text-transform: capitalize;
+}
 
+
+.mark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, .4);
+  color: #fff;
+}
+
+.uploadIconWrap {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+}
+
+.uploadIcon {
+  margin-right: 10px;
+}
 
 .title {
+  position: relative;
   font-family: 'graphik light';
   font-size: 18px;
   line-height: 1;
   margin-top: 40px;
   margin-bottom: 20px;
+}
+
+.title img {
+  position: absolute;
+  right: 0;
+  top: -2px;
 }
 
 .title:first-letter {
@@ -42,42 +80,6 @@
   text-align: right;
 }
 
-.add_sub_wrap {
-  display: flex;
-  height: 60px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-family: 'graphik light';
-  text-align: center;
-  overflow: hidden;
-}
-
-.add_sub_common {
-  font-size: 48px;
-  color: #777;
-  width: 29%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f3f3f3;
-}
-
-.add {
-  composes: add_sub_common; 
-  border-right: 1px solid #ddd;
-}
-
-.sub {
-  composes: add_sub_common;
-  border-left: 1px solid #ddd;
-}
-
-.input {
-  flex: 1;
-  border: none;
-  text-align: center;
-}
-
 .footer {
   position: fixed;
   bottom: 0;
@@ -88,18 +90,12 @@
   text-align: right;
   white-space: nowrap;
 }
-.price {
-  display: inline-block;
-  font-family: 'graphik light';
-  font-size: 24px;
-  margin-right: 20px;
-  vertical-align: middle;
-}
+
 .btn {
-  text-align: center;
   background-color: #117bf9;
   border: none;
   color: #fff;
+  text-align: center;
   line-height: 1;
   border-radius: 2px;
   font-size: 18px;

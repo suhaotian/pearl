@@ -5,7 +5,9 @@ import Hr from 'components/Hr'
 import styles from './index.css'
 
 export default class ProductDetail extends Component {
-
+  componentDidMount() {
+    document.body.scrollTop = 0
+  }
   render() {
     return (
       <div className="mobile-page">
@@ -15,51 +17,57 @@ export default class ProductDetail extends Component {
         <div className="page-padding">
           <div className={styles.title}>Varieties</div>
           <div className={styles.item}>
-            1.00mm - 1.25mm
-            $10.00 p/dz
+            <span className={styles.itemRight}>1.00mm - 1.25mm</span>
+            <span className={styles.itemRight}>$10.00 p/dz <div />500 dozen</span>
           </div>
           <div className={styles.item}>
-            1.25mm - 1.50mm
-            $11.00 p/dz
+            <span className={styles.itemRight}>1.00mm - 1.25mm</span>
+            <span className={styles.itemRight}>$10.00 p/dz<div />500 dozen</span>
           </div>
           <div className={styles.item}>
-            1.50mm - 1.75mm
-            $11.00 p/dz
+            <span className={styles.itemRight}>1.00mm - 1.25mm</span>
+            <span className={styles.itemRight}>$10.00 p/dz <div />500 dozen</span>
           </div>
         </div>
 
         <div className="page-padding">
           <div className={styles.title}>packaging</div>
           <div className={styles.item + ' ' + styles.active}>
-            Wax cardbox box containing
-            6 x dozen oysters per box
+            <span className={styles.itemLeft}>
+              Wax cardbox box containing
+              6 x dozen oysters per box
+            </span>
           </div>
           <div className={styles.item}>
-            Environmentally friendly box
-            6 x dozen oysters per box
+            <span className={styles.itemLeft}>
+              Environmentally friendly box
+              6 x dozen oysters per box
+            </span>
 
-            + $25 p/box
+            <span>+ $25 p/box</span>
           </div>         
         </div>
 
         <div className="page-padding">
           <div className={styles.title}>Number of boxes</div>
           <div className={styles.add_sub_wrap}>
-            <div className={styles.add}>-</div>
+            <div className={styles.add}>
+              <img src={require('./sub.svg')} />
+            </div>
             <input className={styles.input} />
-            <div className={styles.sub}>+</div>
+            <div className={styles.sub}>
+              <img src={require('./plus.svg')} />
+            </div>
           </div>
         </div>
 
 
         <div className={styles.footer}>
-          <span className={styles.price}>$1500</span>
+          <span className={styles.price}>$1,500.00</span>
           <button className={styles.btn}>Add to Cart</button>
         </div>
 
-        {/*<pre>{JSON.stringify(this.props, null, 2)}</pre> */}
-
-        <div style={{height: 100}} />
+        <div style={{height: 120}} />
       </div>
     )
 

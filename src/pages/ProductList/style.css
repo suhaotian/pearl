@@ -1,0 +1,54 @@
+ .head {
+  position: relative;
+  font-size: 18px;
+  padding: 60px 20px 22px;
+  line-height: 1;
+  text-align: center;
+  text-transform: capitalize;
+ }
+
+ .add {
+  position: absolute;
+  right: 20px;
+  bottom: 25px;
+ }
+
+ .item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+ }
+
+ .item:active {
+  background: #eee;
+ }
+
+ .itemLeft {
+  /*width: 140px;*/
+  /*height: 59px;*/
+  width: 37.3%;
+  margin-right: 15px;
+ }
+
+.itemTitle {
+  font-size: 18px;
+}
+.itemStock {
+  font-size: 14px;
+}
+ .addList {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  color: #777;
+  font-size: 18px;
+  transform: translate3d(-50%, -50%, 0);
+ }
+
+.addListImg {
+  position: relative;
+  top: 3px;
+  margin-right: 15px;
+}

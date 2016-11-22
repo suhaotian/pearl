@@ -20,13 +20,18 @@ export const routes = [
   },
   {
     name: 'list',
-    path: '/list',
+    path: '/admin/list',
     load: asyncLoadHOF(require('pages/ProductList')),
   },
   {
     name: 'edit',
-    path: '/edit/:id',
+    path: '/admin/edit/:id',
+    exactly: true,
     load: asyncLoadHOF(require('pages/ProductEdit')),
   },
-
+  {
+    name: 'edit variety',
+    path: '/admin/edit/variety/:id',
+    load: asyncLoadHOF(require('../pages/ProductEdit/EditVariety'))
+  },
 ]
