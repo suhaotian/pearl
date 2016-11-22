@@ -1,8 +1,8 @@
 {
-  "main.css": "static/css/main.157a52d2.css",
-  "main.css.map": "static/css/main.157a52d2.css.map",
-  "main.js": "static/js/main.2b2bfbb5.js",
-  "main.js.map": "static/js/main.2b2bfbb5.js.map",
+  "main.css": "static/css/main.c74c8e83.css",
+  "main.css.map": "static/css/main.c74c8e83.css.map",
+  "main.js": "static/js/main.b5649225.js",
+  "main.js.map": "static/js/main.b5649225.js.map",
   "static/media/Graphik-Bold-Web.eot": "static/media/Graphik-Bold-Web.baf9dccc.eot",
   "static/media/Graphik-Bold-Web.svg": "static/media/Graphik-Bold-Web.49d814c3.svg",
   "static/media/Graphik-Bold-Web.ttf": "static/media/Graphik-Bold-Web.c07b5ec8.ttf",
@@ -20,6 +20,8 @@
   "static/media/Graphik-Semibold.eot": "static/media/Graphik-Semibold.3b11a6e1.eot",
   "static/media/Graphik-Semibold.ttf": "static/media/Graphik-Semibold.eeae5d40.ttf",
   "static/media/Graphik-Semibold.woff": "static/media/Graphik-Semibold.7d7525b2.woff",
+  "static/media/add.svg": "static/media/add.01358a52.svg",
+  "static/media/add_black.svg": "static/media/add_black.a51d21d1.svg",
   "static/media/banner.jpg": "static/media/banner.3fb0978a.jpg",
   "static/media/gothamhtf-black-webfont.eot": "static/media/gothamhtf-black-webfont.3af5ddd2.eot",
   "static/media/gothamhtf-black-webfont.svg": "static/media/gothamhtf-black-webfont.c768618f.svg",
@@ -34,5 +36,10 @@
   "static/media/img1@2x.jpg": "static/media/img1@2x.a6863c42.jpg",
   "static/media/img2@2x.jpg": "static/media/img2@2x.dc059376.jpg",
   "static/media/img3@2x.jpg": "static/media/img3@2x.8be18a30.jpg",
-  "static/media/img4@2x.jpg": "static/media/img4@2x.45029758.jpg"
+  "static/media/img4@2x.jpg": "static/media/img4@2x.45029758.jpg",
+  "static/media/img_1.jpg": "static/media/img_1.3fb0978a.jpg",
+  "static/media/img_2.jpg": "static/media/img_2.a6863c42.jpg",
+  "static/media/plus.svg": "static/media/plus.ccf977fa.svg",
+  "static/media/sub.svg": "static/media/sub.6ddf4669.svg",
+  "static/media/upload.svg": "static/media/upload.499c367b.svg"
 }
