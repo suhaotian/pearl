@@ -35,11 +35,14 @@
   white-space: nowrap;
 }
 .itemLeft {
-  width: 185px;
+  flex: 1;
+  text-align: left;
+  margin-right: 20px;
 }
 
 .itemRight {
   text-align: right;
+  width: 31.7%;
 }
 
 .footer {
