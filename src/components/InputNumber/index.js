@@ -14,7 +14,8 @@ class InputNumber extends Component {
   }
 
   increase = () => {
-    let tmpValue = this.state.value + this.props.step
+    let value = (this.state.value === '' ? 0 :this.state.value)
+    let tmpValue = value + this.props.step
     if (tmpValue > this.props.max) return
     this.handleSetState({
       value: tmpValue
