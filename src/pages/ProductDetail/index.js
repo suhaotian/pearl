@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Banner from './Banner'
 import Description from './Description'
 import Hr from 'components/Hr'
+import InputNumber from 'components/InputNumber'
+import currency from 'utils/currency'
 import styles from './index.css'
 
 
@@ -51,18 +53,19 @@ export default class ProductDetail extends Component {
 
         <div className="page-padding">
           <div className={styles.title}>Number of boxes</div>
-          <div className={styles.add_sub_wrap}>
-            <button className={styles.add}>
-            </button>
-            <input className={styles.input} />
-            <button className={styles.sub}>
-            </button>
-          </div>
+          <InputNumber 
+            unit="box"
+            units="boxes"
+            value={2}
+            onChange={(number) => {console.log(number)}}
+          />
         </div>
 
 
         <div className={styles.footer}>
-          <span className={styles.price}>$1,500.00</span>
+          <span className={styles.price}>
+            {currency(1500)}
+          </span>
           <button className={styles.btn}>Add to Cart</button>
         </div>
 

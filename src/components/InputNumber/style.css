@@ -1,0 +1,47 @@
+
+.add_sub_wrap {
+  display: flex;
+  height: 60px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'graphik light';
+  text-align: center;
+  overflow: hidden;
+}
+
+.add_sub_common {
+  /*flex: 1;*/
+  width: 29%;
+  border: none;
+  display: block;
+/*  padding: 0;
+*/  margin: 0;
+  position: relative;
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  background-color: #f3f3f3;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.sub {
+  composes: add_sub_common; 
+  border-right: 1px solid #ddd;
+  background-image: url(./plus.svg);
+}
+
+.add {
+  composes: add_sub_common;
+  border-left: 1px solid #ddd;
+  background-image: url(./sub.svg);
+}
+
+.input {
+  /*flex: 1;*/
+  width: 42%;
+  font-size: 18px;
+  font-family: 'graphik light';
+  border: none;
+  text-align: center;
+}
