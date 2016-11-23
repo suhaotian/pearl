@@ -1,36 +1,29 @@
 import React, { Component } from 'react'
 
 export default class SelectUtil extends Component {
-  constructor(props) {
-    super(props)
 
-    this.state = {
-      current: props.current,
-      data: props.data,
-    }
+  state = {
+    current: this.props.current,
   }
 
-
+  componentWillReceiveProps({current}) {
+    if (
+      this.state.current !== current
+    ) {
+      this.setState({current})
+    }
+  }
 
   handleClick(i) {
+    if (i === this.state.current && !this.props.forceUpdate) return
     this.setState({current: i})
-    this.onChange(i)
+    this.props.onChange(i)
   }
-
-  componentWillReceiveProps({current, data}) {
-    if (
-      this.state.current !== nextProps.current ||
-      this.state.data !== nextProps.data
-    ) {
-      this.setState({current, data})
-    }
-  }
-
 
   render() {
     const {
       current, data, 
-      style, className, 
+      style, className, forceUpdate,
       keyField, activeClassName, activeStyle, 
       component, children,
       ...other,
@@ -39,7 +32,7 @@ export default class SelectUtil extends Component {
     return (
       <div>
         {
-          this.state.data.map((item, i) => {
+          this.props.data.map((item, i) => {
             let key = keyField ? item[keyField] : i
             let finalStyle = style
             let finalClassName = className
@@ -69,4 +62,5 @@ export default class SelectUtil extends Component {
 SelectUtil.defaultProps = {
   component: 'div',
   onChange: function() {},
+  forceUpdate: false,  // If current with click is same, don't call setState
 }
