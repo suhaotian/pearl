@@ -61,7 +61,7 @@ class InputNumber extends Component {
 
   render() {
     let {value, focus} = this.state
-    let {unit, units, onChange, disabled} = this.props
+    let {unit, units, disabled} = this.props
     let unit_str = focus ? '' : (value > 1 ? ` ${units}` : (value > 0 ? ` ${unit}` : '') )
     return (
       <div className={styles.add_sub_wrap}>

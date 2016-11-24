@@ -1,3 +1,5 @@
+/* eslint-disable */ 
+
 import React, { Component } from 'react'
 import ResponsiveImage from 'components/ResponsiveImage'
 import Slider from 'react-slick'

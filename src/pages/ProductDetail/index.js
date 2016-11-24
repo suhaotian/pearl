@@ -64,14 +64,12 @@ export default class ProductDetail extends Component {
           />
         </div>
 
-        {/*
         <div className={styles.footer}>
           <span className={styles.price}>
             {currency(1500)}
           </span>
           <button className={styles.btn}>Add to Cart</button>
         </div>
-        */}
         <div style={{height: 120}} />
       </div>
     )

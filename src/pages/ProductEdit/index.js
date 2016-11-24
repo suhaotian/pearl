@@ -1,3 +1,5 @@
+/* eslint-disable */ 
+
 import React, { Component } from 'react'
 import ResponsiveImage from 'components/ResponsiveImage'
 import styles from './style.css'
