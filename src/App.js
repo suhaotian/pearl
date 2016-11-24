@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import Router from 'react-router/HashRouter'
 // import Router from 'react-router/BrowserRouter'
 import Match from 'react-router/Match'
+import Redirect from 'react-router/Redirect'
 import Miss from 'react-router/Miss'
-import { routes } from './routes'
+import { routes, redirectRoutes } from './routes'
 import styles from './index.css'
 
 export default class App extends Component {
@@ -20,6 +21,14 @@ export default class App extends Component {
                 component={item.load}
                 className={styles.page}
               />
+            ))
+          }
+
+          {
+            redirectRoutes.map(({from, to}, i) => (
+              <Match key={i} exactly pattern={from} render={() => (
+                <Redirect to={to} />
+              )}/>
             ))
           }
 

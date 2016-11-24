@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import styles from './style.css'
 
 class InputNumber extends Component {
-  
+
   state = {
     value: this.props.value,
+    focus: false,
   }
 
   componentWillReceiveProps(nextProps) {
@@ -38,10 +39,18 @@ class InputNumber extends Component {
       tmpValue = (v.length > 0 ? parseFloat(v.join('')) : '')
     } if (e.which >= 48 && e.which <= 57) {
       tmpValue = parseFloat((this.state.value ? `${this.state.value}` : '') + String.fromCharCode(e.which))
-    } 
+    }
     if (tmpValue !== null) {
       this.handleSetState({value: tmpValue})
     }
+  }
+
+  handleFocus = (e) => {
+    this.setState({focus: true})
+  } 
+
+  handleBlur = (e) => {
+    this.setState({focus: false})
   }
 
   handleSetState = (state) => {
@@ -51,29 +60,32 @@ class InputNumber extends Component {
   }
 
   render() {
-    let {value} = this.state
+    let {value, focus} = this.state
     let {unit, units, onChange, disabled} = this.props
+    let unit_str = focus ? '' : (value > 1 ? ` ${units}` : (value > 0 ? ` ${unit}` : '') )
     return (
       <div className={styles.add_sub_wrap}>
-        <button 
-          className={styles.sub} 
+        <span
+          className={styles.sub}
           onClick={this.decrease}
         >
-        </button>
-        <input 
-          className={styles.input} 
+        </span>
+        <input
+          className={styles.input}
           value={
-            value + (value > 1 ? ` ${units}` : (value > 0 ? ` ${unit}` : '') )
+            value + unit_str
           }
           onKeyDown={this.handleKeyDown}
           onChange={() => {}}
-          disabled={disabled} 
+          onFocus={this.handleFocus}
+          onBlur={this.handleBlur}
+          disabled={disabled}
         />
-        <button 
+        <span
           className={styles.add}
           onClick={this.increase}
         >
-        </button>
+        </span>
       </div>
     )
   }

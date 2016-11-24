@@ -37,7 +37,7 @@ export default class ProductDetail extends Component {
           <div className={styles.title}>packaging</div>
           <div className={styles.item + ' ' + styles.active}>
             <span className={styles.itemLeft}>
-              Wax cardbox box containing 
+              Wax cardbox box containing
               <br/>
               6 x dozen oysters per box
             </span>
@@ -51,12 +51,12 @@ export default class ProductDetail extends Component {
             </span>
 
             <span>+ $25 p/box</span>
-          </div>         
+          </div>
         </div>
 
         <div className="page-padding">
           <div className={styles.title}>Number of boxes</div>
-          <InputNumber 
+          <InputNumber
             unit="box"
             units="boxes"
             value={2}
@@ -64,18 +64,17 @@ export default class ProductDetail extends Component {
           />
         </div>
 
-
+        {/*
         <div className={styles.footer}>
           <span className={styles.price}>
             {currency(1500)}
           </span>
           <button className={styles.btn}>Add to Cart</button>
         </div>
-
+        */}
         <div style={{height: 120}} />
       </div>
     )
 
   }
 }
-

@@ -59,3 +59,10 @@ export const routes = [
     }),
   },
 ]
+
+export const redirectRoutes = [
+  {
+    from: '/home',
+    to: '/',
+  }
+]
