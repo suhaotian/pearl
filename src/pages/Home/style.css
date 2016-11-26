@@ -1,0 +1,73 @@
+.head {
+  font-size: 24px;
+  padding: 10px 0 12px;
+  text-align: center;
+}
+
+.wrap {
+  padding: 0 25px;
+}
+
+.block {
+  position: relative;
+  border-radius: 5px;
+  text-align: center;
+  background-image: linear-gradient(-180deg, #EEEEEE 0%, #F9F9F9 100%);
+}
+
+.inner {
+  
+}
+
+.title {
+  padding: 44px 0 68px;
+  line-height: 1;
+  font-size: 36px;
+  font-family: "Circular Air Pro";
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.imgWrap {
+  padding: 0 20px 88px;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 16px;
+  line-height: 28px;
+  padding: 10px 25px;
+  border: none;
+  border: 2px solid #222222;
+  border-radius: 25px;
+  color: #222;
+  background-color: transparent;
+  cursor: pointer;  
+}
+
+.btnWrap {
+  position: absolute;
+  left:0;
+  width: 100%;
+  bottom: 30px;
+}
+
+.dotWrap {
+  padding: 20px 0;
+  line-height: 1;
+  text-align: center;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  vertical-align: middle;
+  margin: 0 3px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #d8d8d8;
+}
+
+.dot.active {
+  background-color: #000;
+}

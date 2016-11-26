@@ -10,6 +10,7 @@
 }
 
 :global .mobile-page {
+  position: relative;
   max-width: 640px;
   margin: auto;
 }

@@ -9,7 +9,7 @@ export default class Header extends Component {
       <div className="container">
         <div className={styles.wrap}>
           <Link to="/" className={styles.logo}>
-            cool store
+            demo store
           </Link>
 
           <div>

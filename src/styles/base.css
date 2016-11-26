@@ -10,11 +10,15 @@ html {
 }
 
 body {
-  font-family: graphik;
+  font-family: ".SFNSDisplay",BlinkMacSystemFont,"Helvetica Neue";
   margin: 0;
   padding: 0;
   line-height: 1.5;
   color: #222;
   background-color: #FFF;
   /*background-color: #DFDFE;*/
+}
+
+a {
+  text-decoration: none;
 }
