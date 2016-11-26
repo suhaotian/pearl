@@ -2,7 +2,7 @@ import asyncLoad from './asyncLoad'
 
 export const routes = [
   {
-    name: 'cool store',
+    name: 'demo store',
     path: '/',
     exactly: true,
     load: asyncLoad((cb) => {
