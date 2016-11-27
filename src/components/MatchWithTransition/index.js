@@ -24,6 +24,7 @@ const MatchWithTransition = ({ component:Component, ...rest }) => {
                 key={config.key}
                 style={config.style}
                 className={styles.page}
+                id={'page_container'}
               > 
                 <StaticComponent>
                   <Component {...config.data}/>

@@ -8,10 +8,6 @@ class AddToCartPage extends Component {
 
   // shouldComponentUpdate(nextProps, nextState) {}
 
-  // componentDidMount() {}
-
-  // componentWillUnmount() {}
-
   // componentWillReceiveProps(nextProps) {}
 
   render() {

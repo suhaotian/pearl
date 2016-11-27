@@ -121,21 +121,15 @@ class ProductDetail extends Component {
             </SelectUtil>
           </div>
         </div>
-        {/*
-          current === null ? null :
-          <div className={styles.ft}>
-            <div className={styles.btn}>$4.00 per dozen</div>
-          </div>   
-          */      
-        }
-        <div className={styles.ft}>
-          <div className={styles.btn} onClick={() => {this.setState({add: true})}}>$4.00 per dozen</div>
-        </div>         
-        <div style={{height: 75}}></div>
 
         {
-          this.state.add ? <AddToCartPage onClose={() => {this.setState({add: false})}}/> : null
+          this.state.add ? <AddToCartPage onClose={() => {this.setState({add: false})}}/> : (
+          <div className={styles.ft}>
+            <div className={styles.btn} onClick={() => {this.setState({add: true})}}>$4.00 per dozen</div>
+          </div>         
+          )
         }
+        <div style={{height: 75}}></div>
       </div>
     )
   }
