@@ -3,6 +3,7 @@ import ResponsiveImage from 'components/ResponsiveImage'
 import Link from 'react-router/Link'
 import Slider from 'react-slick'
 import StaticComponent from 'components/StaticComponent'
+import NavBar from '../common/NavBar'
 import styles from './style.css'
 
 class Home extends Component {
@@ -52,7 +53,11 @@ class Home extends Component {
     ]
     return (
       <div style={{height: this.state.height}}>
-        <div className={styles.title}>Pearl</div>
+        <NavBar
+          title={"Pearl"}
+          cart={false}
+          back={false}
+        />
         <Slider {...settings}>
           {
             data.map((item, i) => (

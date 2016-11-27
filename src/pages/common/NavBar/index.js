@@ -24,14 +24,16 @@ class NavBar extends Component {
   // componentWillReceiveProps(nextProps) {}
 
   render() {
-    let Close = () => (<span className={styles.iconClose} onClick={this.goTo.bind(null, '/')}></span>)
+    let {back,title,cart} = this.props
+    let Close = () => (<span className={styles.iconClose} onClick={this.goTo.bind(null, back)}></span>)
     // let Back = () => (<span className={styles.iconBack} onClick={() => {this.goTo('/')}}></span>)
     let Cart = () => (<span className={styles.iconCart} onClick={this.goTo.bind(null, '/cart')}></span>)
+
     return (
       <div className={styles.nav+this.state.animate}>
-        <Close />
-        <span className={styles.title}>oysters</span>
-        <Cart />
+        { back ? <Close /> : null }
+        <span className={styles.title}>{title}</span>
+        { cart ? <Cart /> : null }
       </div>    
     )
   }

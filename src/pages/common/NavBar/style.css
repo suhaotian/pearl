@@ -3,7 +3,15 @@
   justify-content: space-between;
   /*align-items: center;*/
   color: #000;
-  padding: 15px 0 20px;
+  padding: 10px 0 16px;
+}
+
+.title {
+  font-family: "Circular Air Pro Book";
+  font-size: 18px;
+  flex: 1;
+  text-align: center;
+  text-transform: capitalize;
 }
 
 .iconBase {
@@ -29,14 +37,6 @@
   composes: iconBase;
   background-image: url(resources/icons/back.svg);
 }
-
-.title {
-  font-family: "Circular Air Pro";
-  font-size: 18px;
-  font-weight: bold;
-  text-transform: capitalize;
-}
-
 
 
 .animate {

@@ -44,7 +44,12 @@ class ProductList extends Component {
       <div>
         {data.length === 0 ? <GlobalLoading /> : (
           <div className={styles.wrap} style={{minHeight: height}}>
-            <NavBar router={this.context.router} />
+            <NavBar
+              router={this.context.router} 
+              title={'oysters'}
+              back={'/'}
+              cart={true}
+            />
             {
               data.map((item, i) => {
                 let active = ` ${styles.outStock}`
