@@ -18,6 +18,14 @@ const Loading = ({size, color, style, ...other}) => (
   </div>                           
 )
 
+export const GlobalLoading = (props) => {
+  return (
+    <div className={styles.globalLoading}>
+      <Loading color="#000" size={8} />
+    </div>
+  )
+}
+
 Loading.defaultProps = {
   size: 6,
   color: '#117bf9',

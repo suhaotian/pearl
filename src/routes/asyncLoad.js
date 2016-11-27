@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { GlobalLoading } from 'components/Loading'
 
 export default function asyncLoad(cb) {
   return class AsyncComponent extends Component {
@@ -18,7 +18,7 @@ export default function asyncLoad(cb) {
       if (Component) {
         return <Component {...this.props} />
       }
-      return null  // Or loading effect component here ?
+      return <GlobalLoading />  // Or loading effect component here ?
     }
   }
 }

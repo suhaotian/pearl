@@ -3,13 +3,13 @@
 }
 
 .dot {
-  margin-right: 4px;
+  margin:0 1.5px;
   border-radius: 100%;
   display: inline-block;
   animation-name: a1;
   animation-duration: 0.8s;
   animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in;
   animation-fill-mode: both;
   vertical-align: middle;
 }
@@ -37,4 +37,15 @@
   30%, 50% {
     opacity: 1;
   }
+}
+
+.globalLoading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

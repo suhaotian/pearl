@@ -6,7 +6,6 @@ import Redirect from 'react-router/Redirect'
 import Miss from 'react-router/Miss'
 import { routes, redirectRoutes } from './routes'
 import MatchWithTransition from 'components/MatchWithTransition'
-import styles from './index.css'
 
 export default class App extends Component {
   render() {
@@ -26,7 +25,7 @@ export default class App extends Component {
 
           {
             redirectRoutes.map(({from, to}, i) => (
-              <Match exactly pattern={from} render={() => (
+              <Match key={i} exactly pattern={from} render={() => (
                 <Redirect to={to} />
               )}/>
             ))

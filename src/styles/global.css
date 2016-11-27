@@ -1,9 +1,3 @@
-:global .container {
-  max-width: 980px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 :global .responsive {
   width: 100%;
   vertical-align: middle;
@@ -11,7 +5,7 @@
 
 :global .mobile-page {
   position: relative;
-  max-width: 640px;
+  max-width: 414px;
   margin: auto;
 }
 

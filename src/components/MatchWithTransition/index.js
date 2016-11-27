@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { TransitionMotion, spring } from 'react-motion'
 import Match from 'react-router/Match'
+import StaticComponent from '../StaticComponent'
 import styles from './style.css'
 
 const MatchWithTransition = ({ component:Component, ...rest }) => {
@@ -21,10 +22,12 @@ const MatchWithTransition = ({ component:Component, ...rest }) => {
             {interpolatedStyles.map(config => (
               <div
                 key={config.key}
-                className={styles.page}
                 style={config.style}
-              >
-                <Component {...config.data}/>
+                className={styles.page}
+              > 
+                <StaticComponent>
+                  <Component {...config.data}/>
+                </StaticComponent>
               </div>
             ))}
           </div>
@@ -33,7 +36,9 @@ const MatchWithTransition = ({ component:Component, ...rest }) => {
     )}/>
   )
 }
-MatchWithTransition.propTypes = {}
+MatchWithTransition.propTypes = {
+  component: PropTypes.any.isRequired
+}
 
 MatchWithTransition.defaultProps = {}
 

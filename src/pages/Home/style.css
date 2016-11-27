@@ -1,26 +1,12 @@
-.head {
-  font-size: 24px;
-  padding: 10px 0 12px;
-  text-align: center;
-}
-
-.wrap {
-  padding: 0 25px;
-}
-
-.block {
-  position: relative;
-  border-radius: 5px;
-  text-align: center;
-  background-image: linear-gradient(-180deg, #EEEEEE 0%, #F9F9F9 100%);
-}
-
-.inner {
-  
-}
-
 .title {
-  padding: 44px 0 68px;
+  font-size: 24px;
+  line-height: 1;
+  padding: 15px 0 20px;
+  text-align: center;
+}
+
+.heading {
+  /*padding: 44px 0 68px;*/
   line-height: 1;
   font-size: 36px;
   font-family: "Circular Air Pro";
@@ -29,10 +15,11 @@
 }
 
 .imgWrap {
-  padding: 0 20px 88px;
+  padding: 0 20px;
 }
 
 .btn {
+  font-family: "Circular Air Pro Book";
   display: inline-block;
   font-size: 16px;
   line-height: 28px;
@@ -45,29 +32,73 @@
   cursor: pointer;  
 }
 
-.btnWrap {
-  position: absolute;
-  left:0;
-  width: 100%;
-  bottom: 30px;
+.btn:active {
+  color: #fff;
+  background-color: #000;
 }
 
-.dotWrap {
-  padding: 20px 0;
+.sliderWrap :global .slick-list {
+  position: absolute;
+  top: 54px;
+  bottom: 48px;
+  width: 100%;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.sliderWrap :global .slick-track {
+  height: 100%;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.sliderWrap :global .slick-slide {
+  float: left;
+  height: 100%;
+  padding: 0 25px;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
+  padding: 0 25px;
+  border-radius: 5px;
+  padding: 15px 0 0;
+  background-image: linear-gradient(-180deg, #EEEEEE 0%, #F9F9F9 100%);
+
+}
+
+
+.dot {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   line-height: 1;
   text-align: center;
 }
 
-.dot {
+.dot li {
   width: 8px;
+  font-size: 0;
   height: 8px;
   vertical-align: middle;
-  margin: 0 3px;
+  margin: 0 1.5px;
   display: inline-block;
   border-radius: 50%;
   background-color: #d8d8d8;
+  transition: all .2s ease-in;
 }
 
-.dot.active {
+.dot button {
+  display: none;
+}
+
+
+
+.dot :global li.slick-active {
   background-color: #000;
 }

@@ -1,0 +1,49 @@
+.wrap {
+  min-height: 100%;
+  padding: 0 15px 50px;
+  background-image: linear-gradient(-180deg, #EEEEEE 0%, #F9F9F9 100%);
+  composes: animate from 'styles/animation.css';
+}
+
+.item {
+  margin: 0 0 15px 0;
+  padding: 5px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.itemImg {
+  width: 170px; 
+}
+
+.outStock {
+  opacity: .2;
+}
+
+.itemInfo {
+  font-family: "Circular Air Pro";
+  color: #000;
+  margin-left: 30px;
+}
+
+.itemInfo h3 {
+  font-weight: bold;
+  text-transform: capitalize;
+  font-size: 16px;
+  margin: 0;
+  line-height: 1.12;
+}
+
+.itemInfo div {
+  font-weight: 200;
+}
+
+.itemPrice {
+  margin-top: 8px;
+}
+
+.status:first-letter {
+  text-transform: uppercase;
+}
