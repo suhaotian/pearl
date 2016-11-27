@@ -1,12 +1,12 @@
 {
-  "main.css": "static/css/main.fc089c28.css",
-  "main.css.map": "static/css/main.fc089c28.css.map",
-  "main.js": "static/js/main.c209c77a.js",
-  "main.js.map": "static/js/main.c209c77a.js.map",
-  "static/js/1.288a2433.chunk.js": "static/js/1.288a2433.chunk.js",
-  "static/js/1.288a2433.chunk.js.map": "static/js/1.288a2433.chunk.js.map",
-  "static/js/2.901a3a9f.chunk.js": "static/js/2.901a3a9f.chunk.js",
-  "static/js/2.901a3a9f.chunk.js.map": "static/js/2.901a3a9f.chunk.js.map",
+  "main.css": "static/css/main.78f195d4.css",
+  "main.css.map": "static/css/main.78f195d4.css.map",
+  "main.js": "static/js/main.cb6848e3.js",
+  "main.js.map": "static/js/main.cb6848e3.js.map",
+  "static/js/1.3fee9969.chunk.js": "static/js/1.3fee9969.chunk.js",
+  "static/js/1.3fee9969.chunk.js.map": "static/js/1.3fee9969.chunk.js.map",
+  "static/js/2.f0c59bbf.chunk.js": "static/js/2.f0c59bbf.chunk.js",
+  "static/js/2.f0c59bbf.chunk.js.map": "static/js/2.f0c59bbf.chunk.js.map",
   "static/media/CircularAirPro-Bold.eot": "static/media/CircularAirPro-Bold.03f87000.eot",
   "static/media/CircularAirPro-Bold.ttf": "static/media/CircularAirPro-Bold.919953e7.ttf",
   "static/media/CircularAirPro-Bold.woff": "static/media/CircularAirPro-Bold.855b1f67.woff",
@@ -16,5 +16,11 @@
   "static/media/CircularAirPro-Light.eot": "static/media/CircularAirPro-Light.e0f0f48a.eot",
   "static/media/CircularAirPro-Light.ttf": "static/media/CircularAirPro-Light.a9161e7b.ttf",
   "static/media/CircularAirPro-Light.woff": "static/media/CircularAirPro-Light.62783d26.woff",
-  "static/media/mussel.png": "static/media/mussel.4b599980.png"
+  "static/media/back.svg": "static/media/back.a1996c54.svg",
+  "static/media/cart.svg": "static/media/cart.e1d7f1c4.svg",
+  "static/media/close.svg": "static/media/close.1f4fabdf.svg",
+  "static/media/crab.png": "static/media/crab.f55fe723.png",
+  "static/media/mussel.png": "static/media/mussel.4b599980.png",
+  "static/media/oyster.png": "static/media/oyster.bfe33c54.png",
+  "static/media/oyster_show.png": "static/media/oyster_show.2bc983d3.png"
 }
