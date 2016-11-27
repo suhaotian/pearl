@@ -1,0 +1,106 @@
+.sliderWrap {
+  position: relative;
+  overflow: hidden;
+}
+
+.sliderWrap :global .slick-track {
+  overflow: hidden;
+}
+
+.info {
+  font-family: "Circular Air Pro";
+  padding: 0 20px 18px;
+}
+.name {
+  font-size: 24px;
+  line-height: 1;
+  padding: 30px 0 15px;
+  margin: 0;
+  font-weight: 600;
+}
+.where, .description {
+  margin: 0;
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.where {
+  line-height: 1.28;
+}
+
+.description {
+  line-height: 1.42;
+  margin-top: 16px;
+}
+
+.more {
+  text-decoration: underline;
+}
+.headTip {
+  font-family: "Circular Air Pro";
+  font-weight: 200;
+  font-size: 12px;
+  line-height: 1;
+  padding: 10px 20px 0;
+  letter-spacing: 1.72px;
+  text-transform: uppercase;
+}
+
+.labelWrap {
+  padding: 0 0 10px 20px;
+}
+
+.labelInner {
+  padding: 10px 0;
+  white-space: nowrap;
+  overflow-x: scroll;
+}
+
+.label {
+  display: inline-block;
+  min-width: 21%;
+  white-space: nowrap;
+  text-align: center;
+  margin-right: 5px;
+  line-height: 1.2;
+  border: 1px solid #eee;
+  border-radius: 2px;
+  padding: 0 3px;
+  height: 28px;
+  line-height: 28px;
+  font-family: "Circular Air Pro";
+  font-weight: 200;
+  font-size: 14px;
+  letter-spacing: -.2px;
+}
+
+.active {
+  font-family: "Circular Air Pro Book";
+  border-color: #222;
+}
+
+.ft {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,.9);
+  padding: 0 20px 12px;
+}
+.btn {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 16px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+}
+
+.animate {
+  transform: translateY(100%);
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  composes: downup from 'styles/animation.css';
+}

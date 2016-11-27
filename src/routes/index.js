@@ -12,11 +12,29 @@ export const routes = [
     }),
   },
   {
-    name: 'pearl',
+    name: 'list',
     path: '/list',
     load: asyncLoad((cb) => {
       require.ensure([], (require) => {
-        cb(require('pages/List'))
+        cb(require('pages/ProductList'))
+      })
+    }),
+  },
+  {
+    name: 'show',
+    path: '/show/:id',
+    load: asyncLoad((cb) => {
+      require.ensure([], (require) => {
+        cb(require('pages/ProductDetail'))
+      })
+    }),
+  },
+  {
+    name: 'cart',
+    path: '/cart',
+    load: asyncLoad((cb) => {
+      require.ensure([], (require) => {
+        cb(require('pages/Cart'))
       })
     }),
   },

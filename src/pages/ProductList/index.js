@@ -2,13 +2,11 @@ import React, { Component, PropTypes } from 'react'
 import ResponsiveImage from 'components/ResponsiveImage'
 import NavBar from '../common/NavBar'
 import { GlobalLoading } from 'components/Loading'
-
+import Link from 'react-router/Link'
 import styles from './style.css'
 
 import mock from 'utils/mock'
 import data from './data'
-
-
 
 
 class ProductList extends Component {
@@ -49,6 +47,7 @@ class ProductList extends Component {
               title={'oysters'}
               back={'/'}
               cart={true}
+              noPadding={true}
             />
             {
               data.map((item, i) => {
@@ -59,7 +58,7 @@ class ProductList extends Component {
                   active = ''
                 }
                 return (
-                  <div key={item.id || i} className={styles.item}>
+                  <Link key={item.id || i} to={`/show/${item.id || i}`} className={styles.item}>
                     <div className={styles.itemImg + active}>
                       <ResponsiveImage 
                         src={item.img}
@@ -71,7 +70,7 @@ class ProductList extends Component {
                       <div className={styles.status}>{text}</div>
                       <div className={styles.itemPrice}>{item.price}</div>
                     </div>
-                  </div>
+                  </Link>
                 )
               })
             }

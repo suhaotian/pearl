@@ -30,7 +30,6 @@ class Home extends Component {
       slidesToShow: 1,
       arrows: false,
       className: styles.sliderWrap,
-      dotsClass: styles.dot,
       slidesToScroll: 1,
     }
 

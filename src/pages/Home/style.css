@@ -40,7 +40,7 @@
 
 .sliderWrap :global .slick-list {
   position: absolute;
-  top: 53px;
+  top: 48px;
   bottom: 40px;
   width: 100%;
   text-align: center;
@@ -55,7 +55,7 @@
 .sliderWrap :global .slick-slide {
   float: left;
   height: 100%;
-  padding: 0 26px 0 16px;
+  padding: 0 25px;
 }
 
 .inner {
@@ -70,36 +70,6 @@
 
 }
 
-
-.dot {
-  position: absolute;
+.sliderWrap :global .slick-dots {
   bottom: 16px;
-  left: 0;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-  line-height: 1;
-  text-align: center;
-}
-
-.dot li {
-  width: 8px;
-  font-size: 0;
-  height: 8px;
-  vertical-align: middle;
-  margin: 0 1.5px;
-  display: inline-block;
-  border-radius: 50%;
-  background-color: #d8d8d8;
-  transition: all .2s ease-in;
-}
-
-.dot button {
-  display: none;
-}
-
-
-
-.dot :global li.slick-active {
-  background-color: #000;
 }

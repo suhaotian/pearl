@@ -12,3 +12,40 @@
 :global .page-padding {
   padding: 0 20px;
 }
+
+
+:global .slick-slide {
+  float: left;
+}
+
+:global .slick-dots {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 8px;
+  left: 0;
+  width: 100%;
+  line-height: 1;
+  text-align: center;
+
+}
+
+:global .slick-dots li {
+  width: 8px;
+  font-size: 0;
+  height: 8px;
+  vertical-align: middle;
+  margin: 0 1.5px;
+  display: inline-block;
+  border-radius: 50%;
+  background-color: #d8d8d8;
+  transition: all .2s ease-in; 
+}
+
+:global .slick-dots li.slick-active {
+  background-color: #000; 
+}
+
+:global .slick-dots button {
+  display: none;
+}
