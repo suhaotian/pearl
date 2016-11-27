@@ -3,8 +3,15 @@
   justify-content: space-between;
   align-items: center;
   color: #000;
-  height: 50px;
-}
+  height: 53px;
+
+/*    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.1);
+*/}
 
 .title {
   font-family: "Circular Air Pro Book";
@@ -22,6 +29,10 @@
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+}
+
+.iconBase:active {
+  background-color: rgba(0,0,0,.1);
 }
 
 .iconClose {

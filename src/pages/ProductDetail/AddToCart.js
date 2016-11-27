@@ -1,13 +1,10 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import NavBar from '../common/NavBar'
-import styles from './style.css'
+import styles from './addToCart.css'
 
-class Cart extends Component {
-  static contextTypes = {
-    router: PropTypes.object.isRequired
-  }
-
-  state = {}
+class AddToCartPage extends Component {
+  
+  // state = {}
 
   // shouldComponentUpdate(nextProps, nextState) {}
 
@@ -19,13 +16,14 @@ class Cart extends Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.page}>
         <NavBar
           router={this.context.router}  
           back={'/list'}
+          onClose={this.props.onClose}
         />
 
-        <div className={styles.title}>Shopping cart</div>
+        <div className={styles.title}>add to cart</div>
         <div className={styles.ft}>
           <div className={styles.btn}>Confirm and pay $2,406.00</div>
         </div>         
@@ -35,8 +33,8 @@ class Cart extends Component {
   }
 }
 
-Cart.defaultProps = {}
+AddToCartPage.defaultProps = {}
 
-Cart.propTypes = {}
+AddToCartPage.propTypes = {}
 
-export default Cart
+export default AddToCartPage

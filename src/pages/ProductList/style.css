@@ -25,7 +25,8 @@
 .itemInfo {
   font-family: "Circular Air Pro";
   color: #000;
-  margin-left: 30px;
+  width: 50%;
+  margin-left: 8%;
 }
 
 .itemInfo h3 {

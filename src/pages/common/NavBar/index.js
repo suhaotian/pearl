@@ -24,9 +24,15 @@ class NavBar extends Component {
   // componentWillReceiveProps(nextProps) {}
 
   render() {
-    let {back,title,cart,arrow,noPadding} = this.props
-    let Close = () => (<span className={styles.iconClose} onClick={this.goTo.bind(null, back)}></span>)
-    let Arrow = () => (<span className={styles.iconBack} onClick={() => {this.goTo('/')}}></span>)
+    let {back,onClose,title,cart,arrow,noPadding} = this.props
+    let Close = () => (<span className={styles.iconClose} onClick={() => {
+      if (!onClose) {
+        this.goTo(back)
+      } else {
+        onClose()
+      }
+    }}></span>)
+    let Arrow = () => (<span className={styles.iconBack} onClick={this.goTo.bind(null, back)}></span>)
     let Cart = () => (<span className={styles.iconCart} onClick={this.goTo.bind(null, '/cart')}></span>)
     return (
       <div className={styles.nav+this.state.animate} style={noPadding ? {} : {paddingLeft: 15, paddingRight: 15}}>

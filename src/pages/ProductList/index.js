@@ -23,7 +23,7 @@ class ProductList extends Component {
   // shouldComponentUpdate(nextProps, nextState) {}
 
   componentDidMount() {
-    mock(data, 1000).then((data) => {
+    mock(data, 800).then((data) => {
       if (this.willUnmount) return
       this.setState({data})
     })

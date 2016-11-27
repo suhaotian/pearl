@@ -5,6 +5,7 @@ import SelectUtil from 'components/SelectUtil'
 import jump from 'jump.js'
 import Slider from 'react-slick'
 import NavBar from '../common/NavBar'
+import AddToCartPage from './AddToCart'
 import styles from './style.css'
 
 class ProductDetail extends Component {
@@ -14,7 +15,8 @@ class ProductDetail extends Component {
   }
 
   state = {
-    current: null,
+    current: 0,
+    add: false,
   }
 
   // shouldComponentUpdate(nextProps, nextState) {}
@@ -127,9 +129,13 @@ class ProductDetail extends Component {
           */      
         }
         <div className={styles.ft}>
-          <div className={styles.btn}>$4.00 per dozen</div>
+          <div className={styles.btn} onClick={() => {this.setState({add: true})}}>$4.00 per dozen</div>
         </div>         
         <div style={{height: 75}}></div>
+
+        {
+          this.state.add ? <AddToCartPage onClose={() => {this.setState({add: false})}}/> : null
+        }
       </div>
     )
   }
