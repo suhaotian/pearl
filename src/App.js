@@ -33,7 +33,7 @@ export default class App extends Component {
 
           <Miss
             render={props => (
-              <div>Nothing Here. 404.</div>
+              <div style={{textAlign: 'center', paddingTop: '1em'}}>Nothing Here. 404.</div>
             )}
           />
         </div>
