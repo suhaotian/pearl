@@ -14,7 +14,7 @@ class Home extends Component {
 
   componentDidMount() {
     this.setState({
-      height: window.innerHeight
+      height: window.innerHeight > window.innerWidth ? window.innerHeight : (768/0.8)
     })
   }
 

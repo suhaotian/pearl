@@ -21,9 +21,14 @@ class AddToCartPage extends Component {
 
         <div className={styles.title}>add to cart</div>
         <div className={styles.ft}>
-          <div className={styles.btn}>Confirm and pay $2,406.00</div>
+          <div className={styles.totalWrap}>
+            <div className={styles.headTip}>total</div>
+            <div className={styles.price}>$802.00</div>
+          </div>
+          <div className={styles.halfBtn}>
+            <div className={styles.btn}>Add to cart</div>
+          </div>
         </div>         
-        <div style={{height: 75}}></div>
       </div>
     )
   }
