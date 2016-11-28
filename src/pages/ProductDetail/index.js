@@ -7,6 +7,7 @@ import Slider from 'react-slick'
 import NavBar from '../common/NavBar'
 import AddToCartPage from './AddToCart'
 import styles from './style.css'
+import commonStyles from '../common/style.css'
 
 class ProductDetail extends Component {
   
@@ -104,7 +105,7 @@ class ProductDetail extends Component {
           </div>
         </div>
 
-        <div className={styles.headTip}>variety</div>
+        <div className={commonStyles.headTip}>variety</div>
         <div className={styles.labelWrap}>
           <div className={styles.labelInner}>
             <SelectUtil 
@@ -123,7 +124,7 @@ class ProductDetail extends Component {
         </div>
 
         {
-          this.state.add ? <AddToCartPage onClose={() => {this.setState({add: false})}}/> : (
+          this.state.add ? <AddToCartPage router={this.context.router} onClose={() => {this.setState({add: false})}}/> : (
           <div className={styles.ft}>
             <div className={styles.btn} onClick={() => {this.setState({add: true})}}>$4.00 per dozen</div>
           </div>         

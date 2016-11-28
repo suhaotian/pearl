@@ -1,0 +1,9 @@
+.headTip {
+  font-family: "Circular Air Pro";
+  font-weight: 200;
+  font-size: 12px;
+  line-height: 1;
+  padding: 10px 20px 0;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+}

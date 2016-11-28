@@ -1,0 +1,41 @@
+
+
+
+.onepx_top, .onepx_bottom {
+  position: relative;
+}
+
+.onepx_top:before {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 2px;
+  top: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #C8C7CC;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+  z-index: 3;
+}
+
+
+.onepx_bottom:after {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #C8C7CC;
+  transform-origin: 0 0;
+  transform: scaleY(0.5);
+  z-index: 3;
+}
+
+.onepx {
+  position: relative;
+  composes: onepx_top;
+  composes: onepx_bottom;
+}

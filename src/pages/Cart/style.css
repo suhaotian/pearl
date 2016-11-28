@@ -29,3 +29,55 @@
   border: none;
   border-radius: 2px;
 }
+
+.wrap {
+  font-family: 'Circular Air Pro';
+  font-weight: 200;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.item {
+  composes: onepx_top from 'styles/onepx.css';
+}
+
+.itemWrap {
+  width: 100%;  
+  flex: 1;
+  composes: onepx_bottom from 'styles/onepx.css';
+}
+
+.row1 {
+  color: #030303;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.row2 {
+  color: #999;
+  line-height: 1.42;
+}
+.rowWrap {
+  padding: 13px 20px;
+  background-color: #fff;
+  z-index: 2;
+}
+
+
+.delete {
+  position: absolute;
+  right: -86px;
+  padding:0 20px;
+  top: 0;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 2px;
+  color: #fff;
+  background-color: #000;
+  text-transform: capitalize;
+  z-index: 1;
+}
+
