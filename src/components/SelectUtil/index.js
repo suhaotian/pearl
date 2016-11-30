@@ -33,7 +33,7 @@ export default class SelectUtil extends Component {
     return (
       <div>
         {
-          this.props.data.map((item, i) => {
+          data.map((item, i) => {
             let key = keyField ? item[keyField] : i
             let finalStyle = style
             let finalClassName = className

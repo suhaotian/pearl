@@ -40,7 +40,7 @@
 
 .sliderWrap :global .slick-list {
   position: absolute;
-  top: 53px;
+  top: 50px;
   bottom: 40px;
   width: 100%;
   text-align: center;

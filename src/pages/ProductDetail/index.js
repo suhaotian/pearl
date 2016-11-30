@@ -7,14 +7,11 @@ import Slider from 'react-slick'
 import NavBar from '../common/NavBar'
 import AddToCartPage from './AddToCart'
 import styles from './style.css'
+import TextExpand from 'components/TextExpand'
 import commonStyles from '../common/style.css'
 
 class ProductDetail extends Component {
   
-  static contextTypes = {
-    router: PropTypes.object.isRequired
-  }
-
   state = {
     current: 0,
     add: false,
@@ -72,7 +69,7 @@ class ProductDetail extends Component {
     return (
       <div>
         <NavBar
-          router={this.context.router}  
+          router={this.props.router}  
           title={'Pearl'}
           cart={true}
           back={'/list'}
@@ -100,8 +97,11 @@ class ProductDetail extends Component {
           </div>
 
           <div className={styles.description}>
-            Still a rarity on East Coast menus, Kusshis are all the rage out West, due to their small size and ultra-clean flavor. Kusshis are grown in floating trays and this breaks off the thin growing edge and forces them to deepen and thicken their shells
-            … <span className={styles.more}>more</span>
+            <TextExpand 
+              text={"Still a rarity on East Coast menus, Kusshis are all the rage out West, due to their small size and ultra-clean flavor. Kusshis are grown in floating trays and.a b c d ef hhhhh n in floating trays and.a b c d ef hhhhh asdaq aqsd."}
+              showLines={4}
+              more={<span className={styles.more}>more</span>}
+            />
           </div>
         </div>
 
@@ -124,7 +124,7 @@ class ProductDetail extends Component {
         </div>
 
         {
-          this.state.add ? <AddToCartPage router={this.context.router} onClose={() => {this.setState({add: false})}}/> : (
+          this.state.add ? <AddToCartPage router={this.props.router} onClose={() => {this.setState({add: false})}}/> : (
           <div className={styles.ft}>
             <div className={styles.btn} onClick={() => {this.setState({add: true})}}>$4.00 per dozen</div>
           </div>         

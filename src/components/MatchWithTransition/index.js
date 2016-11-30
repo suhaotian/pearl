@@ -4,17 +4,20 @@ import Match from 'react-router/Match'
 import StaticComponent from '../StaticComponent'
 import styles from './style.css'
 
-const MatchWithTransition = ({ component:Component, ...rest }) => {
+const MatchWithTransition = ({ component:Component, ...rest }, context) => {
   const willLeave = () => ({ zIndex: 1, opacity: spring(0) })
-
   return (
-    <Match {...rest} children={({ matched, ...props }) => (
+    <Match {...rest} children={({ matched, ...props }) => { 
+      if (props.location.query && props.location.query.layer) {
+        // console.log(props.location.query.layer)
+      }
+      return (
       <TransitionMotion
         willLeave={willLeave}
         styles={matched ? [ {
           key: props.location.pathname,
           style: { opacity: 1 },
-          data: props
+          data: {...props, router: context.router},
         } ] : []}
       >
         {interpolatedStyles => (
@@ -27,16 +30,21 @@ const MatchWithTransition = ({ component:Component, ...rest }) => {
                 id={'page_container'}
               > 
                 <StaticComponent>
-                  <Component {...config.data}/>
+                  <Component {...config.data} />
                 </StaticComponent>
               </div>
             ))}
           </div>
         )}
       </TransitionMotion>
-    )}/>
+    )}}/>
   )
 }
+
+MatchWithTransition.contextTypes = {
+  router: PropTypes.object
+}
+
 MatchWithTransition.propTypes = {
   component: PropTypes.any.isRequired
 }

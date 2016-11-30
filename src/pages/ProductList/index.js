@@ -10,10 +10,6 @@ import data from './data'
 
 
 class ProductList extends Component {
-  
-  static contextTypes = {
-    router: PropTypes.object.isRequired
-  }
 
   state = {
     height: window.innerHeight,
@@ -43,7 +39,7 @@ class ProductList extends Component {
         {data.length === 0 ? <GlobalLoading /> : (
           <div className={styles.wrap} style={{minHeight: height}}>
             <NavBar
-              router={this.context.router} 
+              router={this.props.router} 
               title={'oysters'}
               back={'/'}
               cart={true}
