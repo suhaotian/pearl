@@ -17,6 +17,7 @@
   width: 100%;
   background-color: rgba(255,255,255,.9);
   padding: 0 20px 15px;
+  z-index: 3;
 }
 .btn {
   width: 100%;
@@ -40,6 +41,7 @@
 
 .item {
   composes: onepx_top from 'styles/onepx.css';
+  background-color: #eee;
 }
 
 .itemWrap {

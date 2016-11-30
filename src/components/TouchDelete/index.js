@@ -32,6 +32,7 @@ class TouchDelete extends Component {
   }
 
   handleTouchMove = (e) => {
+    // e.preventDefault()
     this.currentX = e.touches[0].pageX
     this.v = this.currentX - this.x
     this.setState({x: this.v, hasTransition: false})

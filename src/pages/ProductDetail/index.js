@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import ResponsiveImage from 'components/ResponsiveImage'
 import StaticComponent from 'components/StaticComponent'
 import SelectUtil from 'components/SelectUtil'
@@ -6,8 +6,10 @@ import jump from 'jump.js'
 import Slider from 'react-slick'
 import NavBar from '../common/NavBar'
 import AddToCartPage from './AddToCart'
-import styles from './style.css'
 import TextExpand from 'components/TextExpand'
+import currency from 'utils/currency'
+import styles from './style.css'
+
 import commonStyles from '../common/style.css'
 
 class ProductDetail extends Component {
@@ -49,19 +51,24 @@ class ProductDetail extends Component {
 
     let varietys = [
       {
-        value: '1248.00-1.25'
+        value: '1248.00-1.25',
+        price: 4,
       },
       {
-        value: '12.25-1.50'
+        value: '12.25-1.50',
+        price: 6,
       },
       {
-        value: '1.50-1.75'
+        value: '1.50-1.75',
+        price: 8,
       },
       {
-        value: '1.75-2.00'
+        value: '1.75-2.00',
+        price: 10,
       },
       {
-        value: '2.00-2.25'
+        value: '2.00-2.25',
+        price: 12,
       },
     ]
     let {current} = this.state
@@ -98,8 +105,8 @@ class ProductDetail extends Component {
 
           <div className={styles.description}>
             <TextExpand 
-              text={"Still a rarity on East Coast menus, Kusshis are all the rage out West, due to their small size and ultra-clean flavor. Kusshis are grown in floating trays and.a b c d ef hhhhh n in floating trays and.a b c d ef hhhhh asdaq aqsd."}
-              showLines={4}
+              text={"Still a rarity on East Coast menus, Kusshis are all the rage out West, due to their small size and ultra-clean flavor. Kusshis are grown in floating trays and this breaks off the thin growing edge and forces them to deepen and thicken their shells. edge and forces them to deepen and thicken their shells."}
+              showLines={5}
               more={<span className={styles.more}>more</span>}
             />
           </div>
@@ -124,9 +131,10 @@ class ProductDetail extends Component {
         </div>
 
         {
-          this.state.add ? <AddToCartPage router={this.props.router} onClose={() => {this.setState({add: false})}}/> : (
+          this.state.add ? 
+          <AddToCartPage name={'Kusshi Oyster'} data={varietys[this.state.current]} router={this.props.router} onClose={() => {this.setState({add: false})}}/> : (
           <div className={styles.ft}>
-            <div className={styles.btn} onClick={() => {this.setState({add: true})}}>$4.00 per dozen</div>
+            <div className={styles.btn} onClick={() => {this.setState({add: true})}}>{currency(varietys[this.state.current].price)} per dozen</div>
           </div>         
           )
         }

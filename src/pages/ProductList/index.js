@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import ResponsiveImage from 'components/ResponsiveImage'
 import NavBar from '../common/NavBar'
 import { GlobalLoading } from 'components/Loading'

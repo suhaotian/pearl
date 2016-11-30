@@ -30,17 +30,13 @@
 }
 
 .info {
+  font-family: "Circular Air Pro";
+  font-weight: 200;
   font-size: 16px;
   padding: 0 23px;
   margin-bottom: 0;
 }
 
-.stepperWrap {
-  composes: onepx from 'styles/onepx.css';
-  composes: betweenCenter from 'styles/flex.css';
-  padding: 7.5px 15px;
-  color: #030303;
-}
 .package {
   composes: onepx from 'styles/onepx.css';
 }
@@ -55,38 +51,10 @@
   justify-content: space-between;
 }
 
-.packageItem.active {
+.active .packageItem {
   color: #222;
 }
 
-.stepper {
-  display: flex;
-  font-size: 0;
-  border-radius: 3px;
-  border: 1px solid #222;
-}
-
-.stepper span {
-  display: inline-block;
-  width: 47.5px;
-  height: 28.5px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.stepper span:active {
-  color: #fff;
-  background-color: #222;
-}
-
-.decrease {
-  background-image: url(resources/icons/decrease.svg);
-  border-right: 1px solid #222;
-}
-
-.increase {
-  background-image: url(resources/icons/increase.svg);
-}
 
 .ft {
   display: flex;

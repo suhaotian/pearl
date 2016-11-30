@@ -1,0 +1,48 @@
+
+.stepperWrap {
+  composes: onepx from 'styles/onepx.css';
+  composes: betweenCenter from 'styles/flex.css';
+  padding: 7.5px 15px;
+  color: #030303;
+}
+
+.stepper {
+  display: flex;
+  font-size: 0;
+  border-radius: 3px;
+  border: 1px solid #222;
+}
+
+.stepper span {
+  display: inline-block;
+  width: 47.5px;
+  height: 28.5px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.stepper span:active {
+  /*color: #fff;*/
+  background-color: #aaa;
+}
+
+.input {
+  width: 100%;
+  border: none;
+  font-family: 'Circular Air Pro';
+  font-weight: 200;
+  font-size: 16px;
+}
+
+.flex {
+  flex: 1;
+}
+
+.decrease {
+  background-image: url(resources/icons/decrease.svg);
+  border-right: 1px solid #222;
+}
+
+.increase {
+  background-image: url(resources/icons/increase.svg);
+}

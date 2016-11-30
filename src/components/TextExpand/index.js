@@ -24,7 +24,7 @@ class TextExpand extends Component {
     let lh = this.getFloat(styles, 'lineHeight')
     lh = lh >= 2 ? lh : fontSize*lh
 
-    const show_total = (this.getFloat(styles, 'width')/(fontSize*0.52))*x
+    const show_total = (this.getFloat(styles, 'width')/(fontSize*0.5))*x
     if (this.getFloat(styles, 'height')/lh <= x || show_total > this.props.text.length) return
 
     this.setState({
@@ -45,7 +45,7 @@ class TextExpand extends Component {
     return (
       <div ref={c => {this._el = c}} >
         {this.props.text.slice(0, this.state.showLength)}
-        {this.state.showLength !== this.props.text.length ? <span onClick={handleClick}>... {this.props.more}</span> : null}
+        {this.state.showLength !== this.props.text.length ? <span onClick={handleClick}>... {More}</span> : null}
       </div>
     )
   }

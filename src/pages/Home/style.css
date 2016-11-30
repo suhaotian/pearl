@@ -2,7 +2,7 @@
   font-family: "Circular Air Pro Book";
   font-size: 18px;
   line-height: 1;
-  height: 53px;
+  height: 51px;
   padding: 16px 0 0 0;
   text-align: center;
 }
@@ -40,7 +40,7 @@
 
 .sliderWrap :global .slick-list {
   position: absolute;
-  top: 50px;
+  top: 51px;
   bottom: 40px;
   width: 100%;
   text-align: center;

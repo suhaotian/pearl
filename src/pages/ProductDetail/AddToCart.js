@@ -1,10 +1,36 @@
 import React, { Component } from 'react'
 import NavBar from '../common/NavBar'
+import Stepper from 'components/Stepper'
+import SelectUtil from 'components/SelectUtil'
+import currency from 'utils/currency'
 import styles from './addToCart.css'
+
+
+const packages = [
+  {
+    name: 'Wax cardboard paper',
+    unit: '20dz p/box',
+    price: 0,
+  },
+  {
+    name: 'Enviro friendly paper',
+    unit: '20dz p/box',
+    price: 0,
+  },
+  {
+    name: 'Wooden box',
+    unit: '8dz p/box',
+    price: 2,
+  }
+]
+
 
 class AddToCartPage extends Component {
   
-  // state = {}
+  state = {
+    amount: 20,
+    current: 2,
+  }
 
   // shouldComponentUpdate(nextProps, nextState) {}
 
@@ -22,33 +48,42 @@ class AddToCartPage extends Component {
         <div className={styles.title}>add to cart</div>
 
         <p className={styles.info}>
-          Kusshi Oyster <br/>
-          1.50-1.75
+          {this.props.name} <br/>
+          {this.props.data.value}
         </p>
 
         <div className={styles.headTip}>quantity</div>
-        <div className={styles.stepperWrap}>
-          <div>20 dozen</div>
-          <div className={styles.stepper}>
-            <span className={styles.decrease}>-</span>
-            <span className={styles.increase}>+</span>
-          </div>
-        </div>
+        <Stepper 
+          value={this.state.amount}
+          onChange={v =>{this.setState({amount: v})}} 
+          unit={'dozen'} units={'dozen'}
+        />
 
         <div className={styles.headTip}>packaging</div>
         <div className={styles.package}>
-          <div className={styles.packageItem}>Wax cardboard paper (20dz p/box)</div>
-          <div className={styles.packageItem}>Enviro friendly paper (20dz p/box)</div>
-          <div className={styles.packageItem + ' ' + styles.active}>
-            <span>Wooden box (8dz p/box)</span>
-            <span>+ 2.00 p/box</span>
-          </div>
+          <SelectUtil 
+            data={packages} 
+            current={this.state.current} 
+            activeClassName={styles.active} 
+            onChange={(current) => {this.setState({current: current})}}
+          >
+            {
+              (item) => (
+                <div className={styles.packageItem}>
+                  <span>{item.name} ({item.unit})</span>
+                  { item.price ? <span>+ {currency(item.price)} p/box</span> : null }
+                </div>
+              )
+            }
+          </SelectUtil>
         </div>
 
         <div className={styles.ft}>
           <div className={styles.totalWrap}>
             <div className={styles.headTitle}>total</div>
-            <div className={styles.price}>$802.00</div>
+            <div className={styles.price}>
+              {currency(this.state.amount*this.props.data.price + packages[this.state.current].price)}
+            </div>
           </div>
           <div className={styles.halfBtn}>
             <div className={styles.btn} onClick={() => {
