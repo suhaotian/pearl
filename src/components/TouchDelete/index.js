@@ -3,6 +3,7 @@ import React, { Component, PropTypes } from 'react'
 class TouchDelete extends Component {
   static defaultProps = {
     currentX: 0,
+    component: 'div',
   }
 
   static propTypes = {
@@ -58,7 +59,7 @@ class TouchDelete extends Component {
       style['WebkitTransition'] = 'transform .2s ease'
     }
     return (
-      <div 
+      <this.props.component 
         onTouchStart={this.handleTouchStart}
         onTouchMove={this.handleTouchMove}
         onTouchEnd={this.handleTouchEnd}
@@ -66,7 +67,7 @@ class TouchDelete extends Component {
         style={style}
       >
         {this.props.children}
-      </div>
+      </this.props.component>
     )
   }
 }

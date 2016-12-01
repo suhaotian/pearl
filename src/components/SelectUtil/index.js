@@ -38,16 +38,14 @@ export default class SelectUtil extends Component {
             let finalStyle = style
             let finalClassName = className
             if (this.state.current === key) {
-              finalStyle = {...style, ...activeStyle}
-              finalClassName = `${className ? className + ' ' : ''}${activeClassName ? activeClassName : ''}`
+              finalStyle = this.finalStyle = this.finalStyle ? this.finalStyle : {...style, ...activeStyle}
+              finalClassName = this.finalClassName = this.finalClassName ? this.finalClassName : `${className ? className + ' ' : ''}${activeClassName ? activeClassName : ''}`
             }
 
             return (
               <this.props.component 
                 key={key} 
-                onClick={() => {
-                  this.handleClick(key)
-                }}
+                onClick={this.handleClick.bind(this, key)}
                 style={finalStyle}
                 className={finalClassName}
                 {...other}
