@@ -10,14 +10,14 @@ class TextExpand extends Component {
   // shouldComponentUpdate(nextProps, nextState) {}
 
   componentDidMount() {
-    this.handleExpand(this._el, this.props.showLines)
+    this.init(this._el, this.props.showLines)
   }
 
   getFloat = (obj, field) => {
     return parseFloat(obj[field].replace('px', ''))
   }
 
-  handleExpand = (el, x) => {
+  init = (el, x) => {
     const styles = window.getComputedStyle(el)
     const fontSize = this.getFloat(styles, 'fontSize')
 
@@ -32,20 +32,19 @@ class TextExpand extends Component {
     })
   }
 
-  render() {
-    let More = null
-    let handleClick = () => {}
+  handleExpand = () => {
     if (this.state.showLength !== this.props.text.length) {
-      More = <span>... {this.props.more}</span>
-      handleClick = () => {
-        this.setState({showLength: this.props.text.length})
-      }
+      this.setState({showLength: this.props.text.length})
     }
+  }
+
+
+  render() {
 
     return (
       <div ref={c => {this._el = c}} >
         {this.props.text.slice(0, this.state.showLength)}
-        {this.state.showLength !== this.props.text.length ? <span onClick={handleClick}>... {More}</span> : null}
+        {this.state.showLength !== this.props.text.length ? <span onClick={this.handleExpand}>... {this.props.more}</span> : null}
       </div>
     )
   }

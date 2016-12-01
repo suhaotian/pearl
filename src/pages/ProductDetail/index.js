@@ -138,7 +138,7 @@ class ProductDetail extends Component {
           </div>         
           )
         }
-        <div style={{height: 60}}></div>
+        <div style={{height: 75}}></div>
       </div>
     )
   }

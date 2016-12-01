@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import NavBar from '../common/NavBar'
 import TouchDelete from 'components/TouchDelete'
 import currency from 'utils/currency'
+import jump from 'jump.js'
 import styles from './style.css'
 
 const data = [
@@ -48,7 +49,9 @@ class Cart extends Component {
 
   // shouldComponentUpdate(nextProps, nextState) {}
 
-  // componentDidMount() {}
+  componentDidMount() {
+    jump(document.body, {duration: 10})
+  }
 
   // componentWillUnmount() {}
 

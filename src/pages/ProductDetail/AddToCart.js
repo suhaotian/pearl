@@ -32,6 +32,13 @@ class AddToCartPage extends Component {
     current: 2,
   }
 
+  componentDidMount() {
+    document.body.setAttribute('style', "overflow: hidden")
+  }
+
+  componentWillUnmount() {
+    document.body.removeAttribute('style') 
+  }
   // shouldComponentUpdate(nextProps, nextState) {}
 
   // componentWillReceiveProps(nextProps) {}
