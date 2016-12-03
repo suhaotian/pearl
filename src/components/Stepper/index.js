@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styles from './style.css'
+import Increase from './Increase'
 
 class Stepper extends Component {
 
@@ -81,7 +82,7 @@ class Stepper extends Component {
         </div>
         <div className={styles.stepper}>
           <span className={styles.decrease} onClick={this.decrease}>-</span>
-          <span className={styles.increase} onClick={this.increase}>+</span>
+          <Increase onClick={this.increase} />
         </div>
       </div>
     )

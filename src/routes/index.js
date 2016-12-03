@@ -38,6 +38,26 @@ export const routes = [
       })
     }),
   },
+  {
+    name: 'admin-home',
+    path: '/admin',
+    exactly: true,
+    load: asyncLoad((cb) => {
+      require.ensure([], (require) => {
+        cb(require('pages/Admin'))
+      })
+    }),
+  },
+  {
+    name: 'admin-form',
+    path: '/admin/form',
+    load: asyncLoad((cb) => {
+      require.ensure([], (require) => {
+        cb(require('pages/Admin/Form'))
+      })
+    }),
+  },
+
 ]
 
 export const redirectRoutes = [

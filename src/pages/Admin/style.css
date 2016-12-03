@@ -1,0 +1,231 @@
+.title {
+  font-family: "Circular Air Pro";
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1;
+  padding: 30px 20px 40px;
+}
+
+.title:first-letter {
+  text-transform: uppercase;
+}
+
+.ft {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,.9);
+  padding: 0 20px 15px;
+  z-index: 3;
+}
+
+.btn {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+}
+
+.formTitle {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-family: "Circular Air Pro Book";
+  line-height: 1;
+  padding-bottom: 15px;
+}
+
+.name:first-letter {
+  text-transform: uppercase;
+}
+
+.formConainer {
+  padding: 0 20px 30px;
+}
+
+.formItemContainer {
+  font-family: "Circular Air Pro";
+  font-weight: 200;
+  border: 1px solid #ddd;
+  line-height: 1;
+  overflow: hidden;
+  background-color: #eee;
+}
+
+.formItemContainer:last-child {
+  border-bottom: 1px solid #ddd;
+}
+
+.formItem {
+  position: relative;
+  padding: 12px 15px;
+  background-color: #fff;
+}
+.formItemNone {
+  padding: 12px 15px;
+  background-color: #fff;
+  color: #ccc;
+}
+
+.formInner {
+}
+
+.inputBase {
+  font-family: "Circular Air Pro";
+  font-weight: 200;
+  font-size: 14px;
+}
+
+.input {
+  composes: inputBase;
+  border: 1px solid #ddd;
+  width: 100%;
+  display: block;
+  height: 40px;
+  margin: 0;
+  border-radius: 0;
+  padding: 10px 15px;
+}
+
+.textarea {
+  composes: input;
+  height: 150px;
+}
+
+.delete {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -68px;
+  width: 68px;
+  font-size: 14px;
+  text-transform: capitalize;
+  color: #fff;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.unitWrap > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.unit {
+  font-family: 'Circular Air Pro';
+  font-weight: 200;
+  font-size: 14px;
+  border-radius: 20px;
+  border: 1px solid #eee;
+  padding: 7px 0; 
+  width: 24%;
+  line-height: 1;
+  text-align: center;
+  text-transform: capitalize;
+}
+.activeUnit {
+  border-color: #222;
+}
+
+.th {
+  display: flex;
+  text-transform: uppercase;
+  font-size: 1em;
+  border: 1px solid #ddd;
+}
+
+.th > div {
+  line-height: 1;
+  font-size: .625em;
+  padding: 8.5px 10px;
+  letter-spacing: 0.7px;
+  border-left: 1px solid #ddd;
+}
+
+.th > div:first-child {
+  border-left: 0;
+}
+
+.tb {
+  border: 1px solid #ddd;
+  overflow: hidden;
+  background-color: #ddd;
+}
+
+.tb .inner {
+  position: relative;
+  display: flex;
+  text-transform: uppercase;
+  font-size: 1em; 
+  background-color: #fff;
+}
+
+.tb .inner > div input {
+  display: block;
+  line-height: 1;
+  height: 39px;
+  margin: 0;
+  width: 100%;
+  font-family: "Circular Air Pro";
+  font-weight: 200;
+  font-size: 14px;
+  text-align: inherit;
+}
+
+.tb .inner > div {
+  border-left: 0;
+  border-top: 0;
+  border-left: 1px solid #ddd;
+}
+
+.tb .inner > div:first-child {
+  border-left: 0;
+}
+
+.ft {
+  display: flex;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,.95);
+  padding: 15px 15px;
+  text-align: right;
+  z-index: 3;
+}
+.btn {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-weight: 600;
+  text-transform: capitalize;
+  font-size: 16px;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+}
+.halfBtn {
+  width: 50%;
+}
+
+.deleteText {
+  width: 50%;
+  text-align: left;
+  color: #777;
+  font-family: "Circular Air Pro";
+  text-transform: capitalize;
+  font-weight: 200;
+  font-size: 14px;
+}
+.halfBtn .btn {
+  border-radius: 5px;
+}

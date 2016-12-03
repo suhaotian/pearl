@@ -13,14 +13,6 @@
   border: 1px solid #222;
 }
 
-.stepper span {
-  display: inline-block;
-  width: 47.5px;
-  height: 28.5px;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
 .stepper span:active {
   /*color: #fff;*/
   background-color: #aaa;
@@ -38,11 +30,20 @@
   flex: 1;
 }
 
+.common {
+    display: inline-block;
+  width: 47.5px;
+  height: 28.5px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .decrease {
+  composes: common;
   background-image: url(resources/icons/decrease.svg);
   border-right: 1px solid #222;
 }
 
 .increase {
+  composes: common;
   background-image: url(resources/icons/increase.svg);
 }
