@@ -164,7 +164,7 @@ class FormPage extends Component {
           </div>
           <div className={styles.halfBtn}>
             <div className={styles.btn} onClick={() => {
-              //this.props.router.transitionTo('/cart')
+              this.props.router.transitionTo('/admin')
             }}>save</div>
           </div>
         </div>
