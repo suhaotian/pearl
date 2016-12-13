@@ -330,7 +330,7 @@ class FormPage extends Component {
           this.state.requesting ?
           <div
             onTouchMove={e => {e.preventDefault()}}
-            style={{position: 'fixed', top: 0, left: 0, bottom: 0, right: 0, backgroundColor: 'rgba(255,255,255,.5)', zIndex: 0,}}>
+            style={{position: 'fixed', top: 0, left: 0, bottom: 0, right: 0, backgroundColor: 'rgba(255,255,255,.5)', zIndex: 9,}}>
           </div> : null        
         }
       </div>

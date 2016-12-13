@@ -15,7 +15,8 @@ import styles from '../style.css'
 class FormPage extends Component {
 
   init = () => {
-    const data = JSON.parse(localStorage.getItem('CURRENT_EDIT_PRODUCT_INFO'))
+    this.data = JSON.parse(localStorage.getItem('CURRENT_EDIT_PRODUCT_INFO'))
+    const data = this.data
     this.packagingID = data.packaging.id
     const {product, packaging} = data
     let product_variations = []
@@ -81,6 +82,15 @@ class FormPage extends Component {
 
   componentWillUnmount() {
     this.willUnmount = true
+    localStorage.removeItem('OSTATE')
+  }
+
+  createEmptyVariation() {
+    return {id: uuid('v'), type: '', stock: '', price: '', is_new: true}
+  }
+
+  createEmptyPackagingOption() {
+    return {id: uuid('p'), type: '', capacity: '', price: '', is_new: true,}
   }
 
   // componentWillReceiveProps(nextProps) {}
@@ -138,9 +148,8 @@ class FormPage extends Component {
             <span className={styles.name}>Variations, stock and price</span> 
             <Increase 
               onClick={() => {
-                const new_variation = {id: uuid('v'), type: '', stock: '', price: '', is_new: true}
                 this.setState({
-                  variations: this.state.variations.concat(new_variation)
+                  variations: this.state.variations.concat(this.createEmptyVariation())
                 }, () => {
                   window.scrollTo(0, (window.offsetTop || window.scrollY) + 40)
                 })
@@ -216,14 +225,18 @@ class FormPage extends Component {
                           className={styles.delete}
                           onClick={() => {
                             if (item.is_new) {
+                              let new_items = this.state.variations.filter(item_2 => item.id !== item_2.id)
+                              new_items = new_items.length < 1 ? [this.createEmptyVariation()] : new_items 
                               this.setState({
-                                variations: this.state.variations.filter(item_2 => item.id !== item_2.id)
+                                variations: new_items
                               })
                               return
                             }
                             if (confirm('Are you sure want to delete this variation ?')) {
+                              let new_items = this.state.variations.filter(item_2 => item.id !== item_2.id)
+                              new_items = new_items.length < 1 ? [this.createEmptyVariation()] : new_items 
                               this.setState({
-                                variations: this.state.variations.filter(item_2 => item.id !== item_2.id)
+                                variations: new_items
                               })
 
                               ajax().then(instance => {
@@ -233,6 +246,9 @@ class FormPage extends Component {
                                   console.log('delete failed')
                                   if (this.willUnmount) return
                                   this.setState({variations: [item].concat(this.state.variations)})
+                                } else {
+                                  delete this.data.product.modifiers[this.product_mid][item.id]
+                                  localStorage.setItem('CURRENT_EDIT_PRODUCT_INFO', JSON.stringify(this.data))
                                 }
                               })
                             }
@@ -252,9 +268,8 @@ class FormPage extends Component {
             <span className={styles.name}>Packaging options</span>
             <Increase 
               onClick={() => {
-                const new_packaging = {id: uuid('p'), type: '', capacity: '', price: '', is_new: true,}
                 this.setState({
-                  packagings: this.state.packagings.concat(new_packaging)
+                  packagings: this.state.packagings.concat(this.createEmptyPackagingOption())
                 }, () => {
                   window.scrollTo(0, (window.offsetTop || window.scrollY) + 40)
                 })
@@ -329,14 +344,18 @@ class FormPage extends Component {
                           className={styles.delete}
                           onClick={() => {
                             if (item.is_new) {
+                              let new_items = this.state.packagings.filter(item_2 => item.id !== item_2.id)
+                              new_items = new_items.length < 1 ? [this.createEmptyPackagingOption()] : new_items 
                               this.setState({
-                                packagings: this.state.packagings.filter(item_2 => item.id !== item_2.id)
+                                packagings: new_items
                               })
                               return
                             }
                             if (confirm('Are you sure want to delete this packaging option ?')) {
+                              let new_items = this.state.packagings.filter(item_2 => item.id !== item_2.id)
+                              new_items = new_items.length < 1 ? [this.createEmptyPackagingOption()] : new_items
                               this.setState({
-                                packagings: this.state.packagings.filter(item_2 => item.id !== item_2.id)
+                                packagings: new_items
                               })
 
                               ajax().then(instance => {
@@ -346,6 +365,9 @@ class FormPage extends Component {
                                   console.log('delete failed')
                                   if (this.willUnmount) return
                                   this.setState({packagings: [item].concat(this.state.packagings)})
+                                } else {
+                                  delete this.data.packaging.modifiers[this.packaging_mid][item.id]
+                                  localStorage.setItem('CURRENT_EDIT_PRODUCT_INFO', JSON.stringify(this.data))
                                 }
                               })
                             }
@@ -392,7 +414,7 @@ class FormPage extends Component {
           this.state.requesting ?
           <div
             onTouchMove={e => {e.preventDefault()}}
-            style={{position: 'fixed', top: 0, left: 0, bottom: 0, right: 0, backgroundColor: 'rgba(255,255,255,.5)', zIndex: 0,}}>
+            style={{position: 'fixed', top: 0, left: 0, bottom: 0, right: 0, backgroundColor: 'rgba(255,255,255,.5)', zIndex: 9,}}>
           </div> : null        
         }
       </div>

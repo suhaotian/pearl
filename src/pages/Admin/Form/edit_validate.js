@@ -156,8 +156,6 @@ function editValidate(state, that) {
           return item()
         }).then(pushValue)
     }, Promise.resolve()).then((results) => {
-      // ostate = that.state
-      localStorage.removeItem('OSTATE')
       if (that.willUnoumt) return
       that.setState({requesting: false})
       alert('Save success!')
