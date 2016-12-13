@@ -8,7 +8,6 @@ import styles from './style.css'
 import mock from 'utils/mock'
 import data from './data'
 
-
 class ProductList extends Component {
 
   state = {

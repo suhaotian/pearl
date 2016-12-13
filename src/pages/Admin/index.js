@@ -1,41 +1,23 @@
-import React, { Component, PropTypes } from 'react'
-import styles from './style.css'
-import TouchDelete from 'components/TouchDelete'
+/* eslint-disable */
+import React, { Component } from 'react'
 import NavBar from '../common/NavBar'
-import Increase from 'components/Stepper/Increase'
+import Fetch from 'components/Fetch'
 import jump from 'jump.js'
+import CategoryItem from './CategoryItem'
+import styles from './style.css'
 
 class ProductManage extends Component {
-  // static defaultProps = {}
-
-  // static propTypes = {}
-
-  state = {
-    oysters: [
-      {id: 0, name: 'Kusshi Oyster'}
-    ]
-  }
-
-  handleDelete = (id, field) => {
-    const newState = this.state[field].filter((item) => (item.id !== id))
-    this.setState((prevState) => {
-      prevState[field] = newState
-      return prevState
-    })
-  }
-
-  // shouldComponentUpdate(nextProps, nextState) {}
 
   componentDidMount() {
-    jump(document.body, {duration: 10})
+    jump(document.body, {duration: 0})
   }
 
-  // componentWillUnmount() {}
+  goCreate = (categoryID) => {
+    this.props.router.transitionTo(`/admin/${categoryID}`)
+  }
 
-  // componentWillReceiveProps(nextProps) {}
-  // 
-  goCreate = () => {
-    this.props.router.transitionTo('/admin/form')
+  goEdit = (productID) => {
+    this.props.router.transitionTo(`/admin/edit/${productID}`) 
   }
 
   render() {
@@ -45,84 +27,27 @@ class ProductManage extends Component {
           router={this.props.router}  
         />
         <div className={styles.title}>Manage products</div>
-
-
-        <div className={styles.formConainer}>
-          <div className={styles.formTitle}>
-            <span className={styles.name}>oyster</span> 
-            <Increase 
-            onClick={this.goCreate} 
-            style={{width: 15, height: 15}} />
-          </div>
-          <div className={styles.formInner}>
-              { 
-                this.state.oysters.length > 0 ?
-                this.state.oysters.map((item, i) => (
-                  <div key={item.id} className={styles.formItemContainer}>
-                    <TouchDelete len={-68}>
-                      <div className={styles.formItem}>
-                        {item.name}
-
-                        <div
-                          className={styles.delete} 
-                          onClick={() => {
-                            this.handleDelete(item.id, 'oysters')
-                          }}
-                        >delete</div>
-                      </div>
-                    </TouchDelete>
-                  </div>
-                )) :
-                <div className={styles.formItemContainer}>
-                    <div onClick={this.goCreate} className={styles.formItemNone}>
-                      Add your first product
-                    </div>
+        <Fetch url="categories">
+          {
+            (data) => {
+              return (
+                <div>
+                  {
+                    data.result.map(({id, title}) => (
+                      <CategoryItem 
+                        key={id}
+                        id={id} 
+                        title={title} 
+                        handleAdd={this.goCreate.bind(this, id)}
+                        handleEdit={this.goEdit}
+                      />
+                    ))
+                  }
                 </div>
-              }
-          </div>
-        </div>
-        <div className={styles.formConainer}>
-          <div className={styles.formTitle}>
-            <span className={styles.name}>mussel</span> 
-            <Increase onClick={this.goCreate} style={{width: 15, height: 15}} />
-          </div>
-          <div className={styles.formInner}>
-              <div className={styles.formItemContainer}>
-                  <div onClick={this.goCreate} className={styles.formItemNone}>
-                    Add your first product
-                  </div>
-              </div>
-          </div>
-        </div>
-
-        <div className={styles.formConainer}>
-          <div className={styles.formTitle}>
-            <span className={styles.name}>crab</span> 
-            <Increase onClick={this.goCreate} style={{width: 15, height: 15}} />
-          </div>
-          <div className={styles.formInner}>
-              <div className={styles.formItemContainer}>
-                  <div onClick={this.goCreate} className={styles.formItemNone}>
-                    Add your first product
-                  </div>
-              </div>
-          </div>
-        </div>
-
-
-        <div className={styles.formConainer}>
-          <div className={styles.formTitle}>
-            <span className={styles.name}>lobster</span> 
-            <Increase onClick={this.goCreate} style={{width: 15, height: 15}} />
-          </div>
-          <div className={styles.formInner}>
-              <div className={styles.formItemContainer}>
-                  <div onClick={this.goCreate} className={styles.formItemNone}>
-                    Add your first product
-                  </div>
-              </div>
-          </div>
-        </div>
+              )
+            }
+          }
+        </Fetch>
       </div>
     )
   }

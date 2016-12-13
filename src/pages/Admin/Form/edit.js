@@ -4,40 +4,79 @@ import NavBar from '../../common/NavBar'
 import SelectUtil from 'components/SelectUtil'
 import Increase from 'components/Stepper/Increase'
 import Loading from 'components/Loading'
-import validate from './validate'
+import validate from './edit_validate'
 import units from './units'
+import {ajax} from 'api'
 import uuid from './uuid'
+import {GlobalLoading} from 'components/Loading'
 import styles from '../style.css'
+
 
 class FormPage extends Component {
 
-  state = {
-    name: '',
-    description: '',
-    unit: '',
-    requesting: false,
-    variations: [
-      {
-        id: uuid('v'),
-        type: '',
-        stock: '',
-        price: '',
-      },
-    ],
-    packagings: [
-      {
-        id: uuid('p'),
-        type: '',
-        capacity: '',
-        price: '',
-      },
-    ],
+  init = () => {
+    const data = JSON.parse(localStorage.getItem('CURRENT_EDIT_PRODUCT_INFO'))
+    this.packagingID = data.packaging.id
+    const {product, packaging} = data
+    let product_variations = []
+    let packaging_variations = []
+    for (let k in product.modifiers) {
+      let modifier = product.modifiers[k]
+      this.product_mid = modifier.id
+      for (let k2 in modifier.variations) {
+        let variation = modifier.variations[k2]
+        product_variations.unshift({
+          id: variation.id, type: variation.title, 
+          stock: variation.stock_level || '', 
+          price: variation.mod_price.replace('=', '')
+        })
+      }
+    }
+    for (let k in packaging.modifiers) {
+      let modifier = packaging.modifiers[k]
+      this.packaging_mid = modifier.id
+      for (let k2 in modifier.variations) {
+        let variation = modifier.variations[k2]
+        let infos = variation.title.split('__-__')
+        packaging_variations.unshift({
+          id: variation.id, 
+          type: infos[0], capacity: infos[1], 
+          price: variation.mod_price.replace('=', '')
+        })
+      }
+    }
+
+    const original_state = {
+      name: product.title,
+      description: product.description,
+      unit: product.unit,
+      variations: product_variations,
+      packagings: packaging_variations,
+      requesting: false,
+      loading: true,
+    }
+
+    return original_state
   }
+
+  state = this.init()
 
   // shouldComponentUpdate(nextProps, nextState) {}
 
   componentDidMount() {
-    // console.log(this.props.params)
+    ajax().then(instance => {
+      instance(`products/${this.props.params.id}/variations`)
+        .then(res => {
+          if (this.willUnmount) return
+          const variations = this.state.variations.map((item, i) => {
+            item.stock = res.data.result[i].stock_level
+            return item
+          })
+          this.setState({loading: false, variations}, () => {
+            localStorage.setItem('OSTATE', JSON.stringify(this.state))
+          })
+        })
+    })
   }
 
   componentWillUnmount() {
@@ -47,28 +86,15 @@ class FormPage extends Component {
   // componentWillReceiveProps(nextProps) {}
 
   render() {
+    if (this.state.loading) {
+      return <GlobalLoading />
+    }
     return (
       <div>
         <NavBar
           router={this.props.router}  
         />
-        <div className={styles.title}>Add new product</div>
-
-
-        <div className={styles.formConainer}>
-          <div className={styles.formTitle}>
-            <span className={styles.name}>product name</span> 
-          </div>
-          <div className={styles.formInner}>
-            <input 
-              className={styles.input}
-              value={this.state.name}
-              onChange={(e) => {
-                this.setState({name: e.target.value})
-              }}
-            />
-          </div>
-        </div>
+        <div className={styles.title}>Edit {this.state.name}</div>
 
         <div className={styles.formConainer}>
           <div className={styles.formTitle}>
@@ -112,8 +138,9 @@ class FormPage extends Component {
             <span className={styles.name}>Variations, stock and price</span> 
             <Increase 
               onClick={() => {
+                const new_variation = {id: uuid('v'), type: '', stock: '', price: '', is_new: true}
                 this.setState({
-                  variations: this.state.variations.concat({id: uuid('v'), type: '', stock: '', price: '',})
+                  variations: this.state.variations.concat(new_variation)
                 }, () => {
                   window.scrollTo(0, (window.offsetTop || window.scrollY) + 40)
                 })
@@ -188,15 +215,27 @@ class FormPage extends Component {
                         <div
                           className={styles.delete}
                           onClick={() => {
-                            if (this.state.variations.length < 2) {
-                              // alert('At least have one!')
-                              this.setState({variations: [{id: uuid('v'), type: '', stock: '', price: '',}]})
+                            if (item.is_new) {
+                              this.setState({
+                                variations: this.state.variations.filter(item_2 => item.id !== item_2.id)
+                              })
                               return
                             }
+                            if (confirm('Are you sure want to delete this variation ?')) {
+                              this.setState({
+                                variations: this.state.variations.filter(item_2 => item.id !== item_2.id)
+                              })
 
-                            this.setState({
-                              variations: this.state.variations.filter(item_2 => item.id !== item_2.id)
-                            })
+                              ajax().then(instance => {
+                                return instance.delete(`products/${this.props.params.id}/modifiers/${this.product_mid}/variations/${item.id}`)
+                              }).then(res => {
+                                if (!res.data.status) {
+                                  console.log('delete failed')
+                                  if (this.willUnmount) return
+                                  this.setState({variations: [item].concat(this.state.variations)})
+                                }
+                              })
+                            }
                           }}
                         >delete</div>
                       </div>
@@ -213,8 +252,9 @@ class FormPage extends Component {
             <span className={styles.name}>Packaging options</span>
             <Increase 
               onClick={() => {
+                const new_packaging = {id: uuid('p'), type: '', capacity: '', price: '', is_new: true,}
                 this.setState({
-                  packagings: this.state.packagings.concat({id: uuid('p'), type: '', capacity: '', price: '',})
+                  packagings: this.state.packagings.concat(new_packaging)
                 }, () => {
                   window.scrollTo(0, (window.offsetTop || window.scrollY) + 40)
                 })
@@ -288,14 +328,27 @@ class FormPage extends Component {
                         <div
                           className={styles.delete}
                           onClick={() => {
-                            if (this.state.packagings.length < 2) {
-                              // alert('At least have one!')
-                              this.setState({packagings: [{id: uuid('p'), type: '', capacity: '', price: '',}]})
+                            if (item.is_new) {
+                              this.setState({
+                                packagings: this.state.packagings.filter(item_2 => item.id !== item_2.id)
+                              })
                               return
                             }
-                            this.setState({
-                              packagings: this.state.packagings.filter(item_2 => item.id !== item_2.id)
-                            })
+                            if (confirm('Are you sure want to delete this packaging option ?')) {
+                              this.setState({
+                                packagings: this.state.packagings.filter(item_2 => item.id !== item_2.id)
+                              })
+
+                              ajax().then(instance => {
+                                return instance.delete(`products/${this.packagingID}/modifiers/${this.packaging_mid}/variations/${item.id}`)
+                              }).then(res => {
+                                if (!res.data.status) {
+                                  console.log('delete failed')
+                                  if (this.willUnmount) return
+                                  this.setState({packagings: [item].concat(this.state.packagings)})
+                                }
+                              })
+                            }
                           }}
                         >delete</div>
                       </div>
@@ -309,14 +362,23 @@ class FormPage extends Component {
         <div className={styles.ft}>
           <div className={styles.deleteText}>
             <span onClick={() => {
-              if (confirm('Are you sure want to cancel create \nthis product?')) {
-                this.props.router.replaceWith('/admin') 
+              if (confirm('Are you sure want to delete \nthis product?')) {
+                this.setState({
+                  requesting: true
+                })
+                ajax().then(instance => {
+                  instance.delete(`products/${this.props.params.id}`).then(res => {
+                    if (res.data.status) {
+                      this.props.router.replaceWith('/admin')
+                    }
+                  })
+                })
               }
-            }}>cancel</span>
+            }}>delete</span>
           </div>
           <div className={styles.halfBtn}>
             <div className={styles.btn} onClick={() => {
-              validate(this.state, this.props.params.id, this)
+              validate(this.state, this)
             }}>
               {
                 this.state.requesting ?

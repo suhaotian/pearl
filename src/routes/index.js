@@ -50,14 +50,24 @@ export const routes = [
   },
   {
     name: 'admin-form',
-    path: '/admin/form',
+    path: '/admin/:id',
+    exactly: true,
     load: asyncLoad((cb) => {
       require.ensure([], (require) => {
         cb(require('pages/Admin/Form'))
       })
     }),
   },
-
+  {
+    name: 'admin-form',
+    path: '/admin/edit/:id',
+    exactly: true,
+    load: asyncLoad((cb) => {
+      require.ensure([], (require) => {
+        cb(require('pages/Admin/Form/edit'))
+      })
+    }),
+  },
 ]
 
 export const redirectRoutes = [

@@ -4,6 +4,9 @@ import React, { Component } from 'react'
 class StaticComponent extends Component {
   
   // state = {}
+  static defaultProps = {
+    component: 'div'
+  }
 
   shouldComponentUpdate(nextProps, nextState) {
     return false
@@ -16,11 +19,11 @@ class StaticComponent extends Component {
   // componentWillReceiveProps(nextProps) {}
 
   render() {
-    let {children, ...other} = this.props
+    let {component: Component, children, ...other} = this.props
     return (
-      <div {...other}>
+      <Component {...other}>
         {children}
-      </div>
+      </Component>
     )
   }
 }

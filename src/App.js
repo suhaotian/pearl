@@ -7,6 +7,8 @@ import Miss from 'react-router/Miss'
 import { routes, redirectRoutes } from './routes'
 import MatchWithTransition from 'components/MatchWithTransition'
 
+import 'api'
+
 export default class App extends Component {
   render() {
     return (
