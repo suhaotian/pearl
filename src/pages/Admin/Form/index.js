@@ -6,7 +6,7 @@ import Increase from 'components/Stepper/Increase'
 import Loading from 'components/Loading'
 import validate from './validate'
 import units from './units'
-import uuid from './uuid'
+import {createEmptyVariation, createEmptyPackagingOption} from './createEmpty'
 import styles from '../style.css'
 
 class FormPage extends Component {
@@ -16,22 +16,8 @@ class FormPage extends Component {
     description: '',
     unit: '',
     requesting: false,
-    variations: [
-      {
-        id: uuid('v'),
-        type: '',
-        stock: '',
-        price: '',
-      },
-    ],
-    packagings: [
-      {
-        id: uuid('p'),
-        type: '',
-        capacity: '',
-        price: '',
-      },
-    ],
+    variations: [createEmptyVariation()],
+    packagings: [createEmptyPackagingOption()],
   }
 
   // shouldComponentUpdate(nextProps, nextState) {}
@@ -113,7 +99,7 @@ class FormPage extends Component {
             <Increase 
               onClick={() => {
                 this.setState({
-                  variations: this.state.variations.concat({id: uuid('v'), type: '', stock: '', price: '',})
+                  variations: this.state.variations.concat(createEmptyVariation())
                 }, () => {
                   window.scrollTo(0, (window.offsetTop || window.scrollY) + 40)
                 })
@@ -190,7 +176,7 @@ class FormPage extends Component {
                           onClick={() => {
                             if (this.state.variations.length < 2) {
                               // alert('At least have one!')
-                              this.setState({variations: [{id: uuid('v'), type: '', stock: '', price: '',}]})
+                              this.setState({variations: [createEmptyVariation()]})
                               return
                             }
 
@@ -214,7 +200,7 @@ class FormPage extends Component {
             <Increase 
               onClick={() => {
                 this.setState({
-                  packagings: this.state.packagings.concat({id: uuid('p'), type: '', capacity: '', price: '',})
+                  packagings: this.state.packagings.concat(createEmptyPackagingOption())
                 }, () => {
                   window.scrollTo(0, (window.offsetTop || window.scrollY) + 40)
                 })
@@ -290,7 +276,7 @@ class FormPage extends Component {
                           onClick={() => {
                             if (this.state.packagings.length < 2) {
                               // alert('At least have one!')
-                              this.setState({packagings: [{id: uuid('p'), type: '', capacity: '', price: '',}]})
+                              this.setState({packagings: [createEmptyPackagingOption()]})
                               return
                             }
                             this.setState({

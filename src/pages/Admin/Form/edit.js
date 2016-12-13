@@ -7,8 +7,8 @@ import Loading from 'components/Loading'
 import validate from './edit_validate'
 import units from './units'
 import {ajax} from 'api'
-import uuid from './uuid'
 import {GlobalLoading} from 'components/Loading'
+import {createEmptyVariation, createEmptyPackagingOption} from './createEmpty'
 import styles from '../style.css'
 
 
@@ -85,16 +85,6 @@ class FormPage extends Component {
     localStorage.removeItem('OSTATE')
   }
 
-  createEmptyVariation() {
-    return {id: uuid('v'), type: '', stock: '', price: '', is_new: true}
-  }
-
-  createEmptyPackagingOption() {
-    return {id: uuid('p'), type: '', capacity: '', price: '', is_new: true,}
-  }
-
-  // componentWillReceiveProps(nextProps) {}
-
   render() {
     if (this.state.loading) {
       return <GlobalLoading />
@@ -149,7 +139,7 @@ class FormPage extends Component {
             <Increase 
               onClick={() => {
                 this.setState({
-                  variations: this.state.variations.concat(this.createEmptyVariation())
+                  variations: this.state.variations.concat(createEmptyVariation())
                 }, () => {
                   window.scrollTo(0, (window.offsetTop || window.scrollY) + 40)
                 })
@@ -226,7 +216,7 @@ class FormPage extends Component {
                           onClick={() => {
                             if (item.is_new) {
                               let new_items = this.state.variations.filter(item_2 => item.id !== item_2.id)
-                              new_items = new_items.length < 1 ? [this.createEmptyVariation()] : new_items 
+                              new_items = new_items.length < 1 ? [createEmptyVariation()] : new_items 
                               this.setState({
                                 variations: new_items
                               })
@@ -234,7 +224,7 @@ class FormPage extends Component {
                             }
                             if (confirm('Are you sure want to delete this variation ?')) {
                               let new_items = this.state.variations.filter(item_2 => item.id !== item_2.id)
-                              new_items = new_items.length < 1 ? [this.createEmptyVariation()] : new_items 
+                              new_items = new_items.length < 1 ? [createEmptyVariation()] : new_items 
                               this.setState({
                                 variations: new_items
                               })
@@ -269,7 +259,7 @@ class FormPage extends Component {
             <Increase 
               onClick={() => {
                 this.setState({
-                  packagings: this.state.packagings.concat(this.createEmptyPackagingOption())
+                  packagings: this.state.packagings.concat(createEmptyPackagingOption())
                 }, () => {
                   window.scrollTo(0, (window.offsetTop || window.scrollY) + 40)
                 })
@@ -345,7 +335,7 @@ class FormPage extends Component {
                           onClick={() => {
                             if (item.is_new) {
                               let new_items = this.state.packagings.filter(item_2 => item.id !== item_2.id)
-                              new_items = new_items.length < 1 ? [this.createEmptyPackagingOption()] : new_items 
+                              new_items = new_items.length < 1 ? [createEmptyPackagingOption()] : new_items 
                               this.setState({
                                 packagings: new_items
                               })
@@ -353,7 +343,7 @@ class FormPage extends Component {
                             }
                             if (confirm('Are you sure want to delete this packaging option ?')) {
                               let new_items = this.state.packagings.filter(item_2 => item.id !== item_2.id)
-                              new_items = new_items.length < 1 ? [this.createEmptyPackagingOption()] : new_items
+                              new_items = new_items.length < 1 ? [createEmptyPackagingOption()] : new_items
                               this.setState({
                                 packagings: new_items
                               })
