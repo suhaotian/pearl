@@ -4,25 +4,72 @@ import Link from 'react-router/Link'
 import Slider from 'react-slick'
 import StaticComponent from 'components/StaticComponent'
 import NavBar from '../common/NavBar'
+import {GlobalLoading} from 'components/Loading'
 import styles from './style.css'
+
+import {m} from 'api/moltin'
+
+let data = [
+  {
+    id: 0,
+    title: 'oysters',
+    img: require('resources/images/oyster.png'),
+  },
+  {
+    id: 1,
+    title: 'mussels',
+    img: require('resources/images/mussel.png'),
+  },
+  {
+    id: 2,
+    title: 'crabs',
+    img: require('resources/images/crab.png'),
+  },
+  {
+    id: 3,
+    title: 'lobsters',
+    img: require('resources/images/lobster.png'),
+  },
+]
 
 class Home extends Component {
   
   state = {
-    height: 'auto'
+    height: 'auto',
+    fetching: true,
+    data: data,
   }
 
   componentDidMount() {
-    this.setState({
-      height: window.innerHeight > window.innerWidth ? window.innerHeight : (768/0.8)
-    })
+
+    m('Category.List', null)
+      .then(category => {
+        if (this.willUnmout) return
+        this.setState({
+          fetching: false,
+          height: window.innerHeight > window.innerWidth ? window.innerHeight : (768/0.8),
+          data: category.map((item, i) => {
+            const data = this.state.data
+            data[i].id = item.id
+            data[i].title = item.title
+            return data[i]  
+          })
+        })
+      })
+      .catch(e => {
+        console.log(e)
+      })
   }
 
-  // componentWillUnmount() {}
+  componentWillUnmount() {
+    this.willUnmout = true
+  }
 
   // componentWillReceiveProps(nextProps) {}
   
   render() {
+
+    if (this.state.fetching) return <GlobalLoading />
     let settings = {
       dots: true,
       infinite: true,
@@ -33,23 +80,6 @@ class Home extends Component {
       slidesToScroll: 1,
     }
 
-    let data = [
-      {
-        id: 0,
-        title: 'oysters',
-        img: require('resources/images/oyster.png'),
-      },
-      {
-        id: 1,
-        title: 'mussels',
-        img: require('resources/images/mussel.png'),
-      },
-      {
-        id: 2,
-        title: 'crabs',
-        img: require('resources/images/crab.png'),
-      },
-    ]
     return (
       <div style={{height: this.state.height}}>
         <NavBar
@@ -62,12 +92,12 @@ class Home extends Component {
             data.map((item, i) => (
               <div key={i}>
                 <StaticComponent className={styles.inner}>
-                  <div className={styles.heading}>{item.title}</div>
+                  <div className={styles.heading}>{item.title}s</div>
                   <div className={styles.imgWrap}>
                     <ResponsiveImage src={item.img} ratio="69.1%" />
                   </div>
                   <div>
-                    <Link to="/list" className={styles.btn}>See stock</Link>
+                    <Link to={`/list/${item.id}`} className={styles.btn}>See stock</Link>
                   </div>
                 </StaticComponent>
               </div>

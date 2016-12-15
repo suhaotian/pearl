@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import React, { Component } from 'react'
 import TouchDelete from 'components/TouchDelete'
 import NavBar from '../../common/NavBar'
@@ -26,7 +27,7 @@ class FormPage extends Component {
       this.product_mid = modifier.id
       for (let k2 in modifier.variations) {
         let variation = modifier.variations[k2]
-        product_variations.unshift({
+        product_variations.push({
           id: variation.id, type: variation.title, 
           stock: variation.stock_level || '', 
           price: variation.mod_price.replace('=', '')
@@ -39,7 +40,7 @@ class FormPage extends Component {
       for (let k2 in modifier.variations) {
         let variation = modifier.variations[k2]
         let infos = variation.title.split('__-__')
-        packaging_variations.unshift({
+        packaging_variations.push({
           id: variation.id, 
           type: infos[0], capacity: infos[1], 
           price: variation.mod_price.replace('=', '')

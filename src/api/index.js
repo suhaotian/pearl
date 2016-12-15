@@ -12,11 +12,6 @@ const api_instance = axios.create({
   },
 })
 
-function getLocalToken() {
-  return JSON.parse(localStorage.getItem('moltin_token'))
-}
-
-
 function get_token() {
   const config = {
     client_id: '2zFN0Mkx592JtRtSLqYuL3odYLCeATs1QobUuGlyYF', 
@@ -33,7 +28,7 @@ function get_token() {
 export function create() {
   let token = access_token
 
-  if (!token || new Date(token.expires*1000+(token.expires_in/2)) < new Date()) {
+  if (!token || new Date(token.expires*1000) < new Date()) {
     return get_token().then((res) => {
       api_instance.defaults.headers['Authorization'] = `Bearer ${res.access_token}`
       return api_instance

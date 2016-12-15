@@ -13,7 +13,8 @@ export const routes = [
   },
   {
     name: 'list',
-    path: '/list',
+    path: '/list/:id',
+    exactly: true,
     load: asyncLoad((cb) => {
       require.ensure([], (require) => {
         cb(require('pages/ProductList'))
@@ -22,7 +23,8 @@ export const routes = [
   },
   {
     name: 'show',
-    path: '/show/:id',
+    path: '/show/:category_id/:id',
+    exactly: true,
     load: asyncLoad((cb) => {
       require.ensure([], (require) => {
         cb(require('pages/ProductDetail'))

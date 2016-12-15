@@ -55,6 +55,13 @@
   color: #222;
 }
 
+.packaging_price {
+  display: none;
+}
+
+.active .packaging_price {
+  display: inline;
+}
 
 .ft {
   display: flex;
