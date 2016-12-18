@@ -34,9 +34,28 @@ export const routes = [
   {
     name: 'cart',
     path: '/cart',
+    exactly: true,
     load: asyncLoad((cb) => {
       require.ensure([], (require) => {
         cb(require('pages/Cart'))
+      })
+    }),
+  },
+  {
+    name: 'address',
+    path: '/cart/address',
+    load: asyncLoad((cb) => {
+      require.ensure([], (require) => {
+        cb(require('pages/Cart/AddAddress'))
+      })
+    }),
+  },
+  {
+    name: 'payment',
+    path: '/cart/payment',
+    load: asyncLoad((cb) => {
+      require.ensure([], (require) => {
+        cb(require('pages/Cart/AddPayment'))
       })
     }),
   },
@@ -56,7 +75,7 @@ export const routes = [
     exactly: true,
     load: asyncLoad((cb) => {
       require.ensure([], (require) => {
-        cb(require('pages/Admin/Form'))
+        cb(require('pages/Admin/Form/create'))
       })
     }),
   },

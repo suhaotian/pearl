@@ -55,6 +55,28 @@ class AddToCartPage extends Component {
     this.willUnmount = true
   }
 
+  handleAddToCart = () => {
+    if (this.state.amount == 0) {
+      alert('At least have one item!')
+      return
+    }
+    if (this.state.requesting) return
+    const variation = {}
+    const packaging_variation = {}
+    variation[this.props.modifier_id] = this.props.variation.id
+    packaging_variation[this.packaging_mid] = this.state.packaging[this.state.current].id
+    this.setState({requesting: true})
+    m('Cart.Insert', this.props.data.id, this.state.amount, variation).then(res => {
+      return m('Cart.Insert', this.props.data.packaging_id, 1, packaging_variation)
+    }).then((res) => {
+      alert('Add success!')
+      this.props.router.transitionTo('/cart')
+    }).catch(e => {
+      this.setState({requesting: false})
+      alert(JSON.stringify(e))
+    })
+  }
+
 
   render() {
     if (this.state.fetching) return <GlobalLoading />
@@ -107,27 +129,7 @@ class AddToCartPage extends Component {
             </div>
           </div>
           <div className={styles.halfBtn}>
-            <div className={styles.btn} onClick={() => {
-              if (this.state.amount == 0) {
-                alert('At least have one item!')
-                return
-              }
-              if (this.state.requesting) return
-              const variation = {}
-              const packaging_variation = {}
-              variation[this.props.modifier_id] = this.props.variation.id
-              packaging_variation[this.packaging_mid] = this.state.packaging[this.state.current].id
-              this.setState({requesting: true})
-              m('Cart.Insert', this.props.data.id, this.state.amount, variation).then(res => {
-                return m('Cart.Insert', this.props.data.packaging_id, 1, packaging_variation)
-              }).then((res) => {
-                alert('Add success!')
-                this.props.router.transitionTo('/cart')
-              }).catch(e => {
-                this.setState({requesting: false})
-                alert(JSON.stringify(e))
-              })
-            }}>
+            <div className={styles.btn} onClick={this.handleAddToCart}>
               {
                 this.state.requesting ?
                 <Loading color="#fff" /> :

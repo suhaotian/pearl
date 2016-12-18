@@ -9,6 +9,8 @@ import styles from './style.css'
 
 import {m} from 'api/moltin'
 
+window.m = m
+
 let data = [
   {
     id: 0,
@@ -38,6 +40,7 @@ class Home extends Component {
     height: 'auto',
     fetching: true,
     data: data,
+    error: null,
   }
 
   componentDidMount() {
@@ -57,7 +60,11 @@ class Home extends Component {
         })
       })
       .catch(e => {
-        console.log(e)
+        if (this.willUnmout) return
+        this.setState({
+          fetching: false,
+          error: e.error || e.message || JSON.stringify(e)
+        })
       })
   }
 
@@ -70,6 +77,7 @@ class Home extends Component {
   render() {
 
     if (this.state.fetching) return <GlobalLoading />
+    if (this.state.error) return <div>{this.state.error}</div>
     let settings = {
       dots: true,
       infinite: true,

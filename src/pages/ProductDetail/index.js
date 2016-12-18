@@ -48,6 +48,12 @@ class ProductDetail extends Component {
           data: res,
           variations: product_variations,
         })
+      }).catch(e => {
+        if (this.willUnmount) return
+        this.setState({
+          fetching: false,
+          error: e.message || e.error || JSON.stringify(e)
+        })
       })
   }
 
@@ -57,7 +63,7 @@ class ProductDetail extends Component {
 
   render() {
     if (this.state.fetching) return <GlobalLoading />
-    if (this.state.error) return <div>{this.state.error}</div>
+    if (this.state.error) return <div style={{textAlign: 'center', padding: '20px'}}>{this.state.error}</div>
 
     let settings = {
       dots: true,

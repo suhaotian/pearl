@@ -33,7 +33,7 @@ class ProductList extends Component {
       })
       .catch(e => {
         if (this.willUnmount) return
-        this.setState({fetching: false, error: e.message})
+        this.setState({fetching: false, error: e.error || e.message || JSON.stringify(e)})
       })
 
   }

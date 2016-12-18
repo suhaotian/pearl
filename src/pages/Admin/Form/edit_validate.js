@@ -50,12 +50,18 @@ function editValidate(state, that) {
     packagingID = that.packagingID
     // Do we need update product ?
     if (name !== o_state.name || description !== o_state.description || unit !== o_state.unit) {
+      let total_stock = 0, main_price = variations[0].price
+      for (let i = 0; i < variations.length; i++) {
+        total_stock += parseFloat(variations[i].stock)
+      }
       requests.push(
         () => (ajax().then(instance => {
           return instance.put(`products/${productID}`, stringify({
             title: name,
             description,
             unit,
+            stock_level: total_stock,
+            price: main_price,
           }))
         }))
       )

@@ -42,6 +42,10 @@ function validate(state, categoryID, that) {
   } else {
     let packagingID = null, productID = null
     that.setState({requesting: true})
+    let total_stock = 0, main_price = variations[0].price
+    for (let i = 0; i < variations.length; i++) {
+      total_stock += parseFloat(variations[i].stock)
+    }
     ajax()
       .then(instance => {
         return post('products', {   // create packaging
@@ -74,7 +78,7 @@ function validate(state, categoryID, that) {
 
             const pushValue = recordValue.bind(null, [])
 
-            return packagings.reverse().reduce(function (promise, item) {
+            return packagings.reduce(function (promise, item) {
                 return promise.then(() => {
                   return post(`products/${packagingID}/modifiers/${res.data.result.id}/variations`, {
                     title: item.type + '__-__' + item.capacity,
@@ -95,13 +99,13 @@ function validate(state, categoryID, that) {
           slug: `product-${new Date().getTime()}`,
           requires_shipping: 0,
           status: 1,
-          stock_level: 100,
+          stock_level: total_stock,
           stock_status: 1,
           packaging_id: packagingID,
           category: categoryID,
           catalog_only: 0,
           tax_band: '1396202847816647595',
-          price: 100,
+          price: main_price,
         })
       })
       .then(res => {
@@ -118,7 +122,7 @@ function validate(state, categoryID, that) {
 
         const pushValue = recordValue.bind(null, [])
 
-        return variations.reverse().reduce(function (promise, item) {
+        return variations.reduce(function (promise, item) {
             return promise.then(() => {
               return post(`products/${productID}/modifiers/${res.data.result.id}/variations`, {
                 title: item.type,

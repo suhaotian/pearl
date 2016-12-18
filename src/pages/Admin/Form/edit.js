@@ -227,7 +227,8 @@ class FormPage extends Component {
                               let new_items = this.state.variations.filter(item_2 => item.id !== item_2.id)
                               new_items = new_items.length < 1 ? [createEmptyVariation()] : new_items 
                               this.setState({
-                                variations: new_items
+                                variations: new_items,
+                                requesting: true,
                               })
 
                               ajax().then(instance => {
@@ -236,11 +237,16 @@ class FormPage extends Component {
                                 if (!res.data.status) {
                                   console.log('delete failed')
                                   if (this.willUnmount) return
-                                  this.setState({variations: [item].concat(this.state.variations)})
+                                  this.setState({variations: [item].concat(this.state.variations), requesting: false})
                                 } else {
+                                  this.setState({requesting: false})
                                   delete this.data.product.modifiers[this.product_mid][item.id]
                                   localStorage.setItem('CURRENT_EDIT_PRODUCT_INFO', JSON.stringify(this.data))
                                 }
+                              }).catch(e => {
+                                if (this.willUnmount) return
+                                alert(e.error || e.message || JSON.stringify(e))
+                                this.setState({requesting: false})
                               })
                             }
                           }}
