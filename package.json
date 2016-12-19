@@ -60,7 +60,8 @@
     "react-motion": "^0.4.5",
     "react-router": "^4.0.0-alpha.5",
     "react-slick": "^0.14.5",
-    "shallowequal": "^0.2.2"
+    "shallowequal": "^0.2.2",
+    "validator": "^6.2.0"
   },
   "scripts": {
     "start": "node scripts/start.js",

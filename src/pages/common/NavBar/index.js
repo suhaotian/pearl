@@ -7,9 +7,12 @@ class NavBar extends Component {
     return false
   }
 
-
   goTo = (path) => {
     this.props.router.transitionTo(path)
+  }
+
+  replaceWith = (path) => {
+    this.props.router.replaceWith(path)
   }
 
   componentDidMount() {
@@ -19,9 +22,13 @@ class NavBar extends Component {
   // componentWillReceiveProps(nextProps) {}
 
   render() {
-    let {back,onClose, goTo, title,cart,arrow,noPadding} = this.props
+    let {back,onClose, goTo, replaceWith, title,cart, arrow,noPadding} = this.props
     let Close = () => (<span className={styles.iconClose} onClick={() => {
       if (!onClose) {
+        if (replaceWith && 1) {
+          this.replaceWith(back)
+          return
+        }
         if (goTo && 1) {
           this.goTo(back)
           return

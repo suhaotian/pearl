@@ -1,28 +1,38 @@
 import React, { Component, PropTypes } from 'react'
 import NavBar from '../common/NavBar'
-import Loading, {GlobalLoading} from 'components/Loading'
+import Loading from 'components/Loading'
 import validate from './payment_validate'
 import styles from './style.css'
 import {m} from 'api/moltin'
 import jump from 'jump.js'
 
-function generateArray(start, end) {
-  let t = []
-  for (;start <= end; start++) {
-    t.push(start)
-  }
-
-  return t
-}
+import generateArray from 'utils/generateArray'
+import leadingZero from 'utils/leadingZero'
 
 class AddPayment extends Component {
-  // static defaultProps = {}
 
-  // static propTypes = {}
+  getOrderInfo = () => {
+    this.order = JSON.parse(localStorage.getItem('ORDER_INFO')) || {}
+    if (!this.order.id) {
+      this.props.router.replaceWith('/cart')
+      return {}
+    }
+    const info = this.order.bill_to.data
+
+    return {
+      first_name: info.first_name,
+      last_name: info.last_name,
+      number: '',
+      expiry_month: '',
+      expiry_year: '',
+      cvv: '',
+    }
+  }
 
   state = {
     requesting: false,
     paying: false,
+    ...this.getOrderInfo(),
   }
 
   componentDidMount() {
@@ -30,57 +40,39 @@ class AddPayment extends Component {
   }
 
   handlePay = () => {
-    return
     if (this.state.paying) return
     this.setState({paying: true, requesting: true})
-    const bill_to = {
-      first_name: 'Jon',
-      last_name:  'Doe',
-      address_1:  '123 Moltin Street',
-      city:       'Mountain View',
-      county:     'California',
-      country:    'US',
-      postcode:   'CA94040',
-      phone:      '6507123124'
-    }      
-    m('Cart.Complete', {gateway: 'stripe', bill_to: bill_to})
-      .then(order => {
-        return m('Checkout.Payment', 'purchase', order.id, {
-          data: {
-            first_name:   'John',
-            last_name:    'Doe',
-            number:       '4242424242424242',
-            expiry_month: '08',
-            expiry_year:  '2020',
-            cvv:          '123'
-          }
-        })
-      })
-      .then(res => {
-        alert(res.message)
-        return m('Cart.Delete').then(res => {
-          if (this.willUnmount) return
-          this.props.router.replaceWith('/cart')
-        })
-      })
-      .catch(e => {
+    m('Checkout.Payment', 'purchase', this.order.id, {
+      data: this.state
+    })
+    .then(res => {
+      localStorage.removeItem('ORDER_INFO')
+      alert(res.message)
+      return m('Cart.Delete').then(res => {
         if (this.willUnmount) return
-        alert(e.message || JSON.stringify(e))
-        this.setState({paying: false, requesting: false})
+        this.props.router.replaceWith('/cart')
       })
+    })
+    .catch(e => {
+      if (this.willUnmount) return
+      alert(e.message || JSON.stringify(e))
+      this.setState({paying: false, requesting: false})
+    })
   }
 
 
   componentWillUnmount() {
     this.willUnmount = true
+    localStorage.removeItem('ORDER_INFO')
   }
 
   render() {
     return (
       <div>
         <NavBar
-          router={this.context.router}  
-          back={'/'}
+          router={this.props.router}  
+          back={'/cart/address'}
+          replaceWith={true}
         />
 
         <div className={styles.title}>Payment information</div>
@@ -90,21 +82,31 @@ class AddPayment extends Component {
             <span className={styles.name}>Card Number</span> 
           </div>
           <div>
-            <input className={styles.input} type="number" pattern="[0-9]*" name="number"/>
+            <input className={styles.input} type="number" pattern="[0-9]*" name="number"
+              value={this.state.number}
+              onChange={(e) => {this.setState({number: e.target.value})}}
+            />
           </div>
           <div className={styles.formTitle}>
             <span className={styles.name}>Expiry Date</span> 
           </div>
-          <div>
-            <select className={styles.input} name="expiry_month">
+          <div className={styles.flex}>
+            <select className={styles.input} name="expiry_month"
+              value={this.state.expiry_month}
+              onChange={(e) => {this.setState({expiry_month: e.target.value})}}
+            >
               <option value="-1">select month</option>
               {  
-                generateArray(1, 12).map((item, index) => (
+                generateArray(1, 12,leadingZero).map((item, index) => (
                   <option value={item} key={item}>{item}</option>
                 ))
               }
             </select>
-            <select className={styles.input} name="expiry_year">
+            <div style={{width: 20}}></div>
+            <select className={styles.input} name="expiry_year"
+              value={this.state.expiry_year}
+              onChange={(e) => {this.setState({expiry_year: e.target.value})}}
+            >
               <option value="-1">select year</option>
               {
                 generateArray(2016, 2100).map((item, index) => (
@@ -117,8 +119,43 @@ class AddPayment extends Component {
             <span className={styles.name}>CVC</span> 
           </div>
           <div>
-            <input className={styles.input} type="text" name="cvc" />
+            <input className={styles.input} type="text" name="cvc" 
+              value={this.state.cvc}
+              onChange={(e) => {this.setState({cvc: e.target.value})}}
+            />
           </div>
+          <div className={styles.flex}>
+            <div>
+            <div className={styles.formTitle}>
+              <span className={styles.name}>First Name</span> 
+            </div>
+            <div>
+              <input
+                className={styles.input} 
+                type="text" 
+                name="first_name"
+                value={this.state.first_name}
+                onChange={(e) => {this.setState({first_name: e.target.value})}}
+              />
+            </div>
+            </div>
+            <div style={{width: 15}}></div>
+            <div>
+              <div className={styles.formTitle}>
+                <span className={styles.name}>Last Name</span> 
+              </div>
+              <div>
+                <input 
+                  className={styles.input} 
+                  type="text" 
+                  name="last_name"
+                  value={this.state.last_name}
+                  onChange={(e) => {this.setState({last_name: e.target.value})}}
+                />
+              </div>
+            </div>
+          </div>
+
 
         </div>
 

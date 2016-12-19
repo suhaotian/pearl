@@ -85,46 +85,44 @@ class Cart extends Component {
 
   handlePay = () => {
     if (this.state.paying) return
-    if(confirm('Will go to checkout ?')) {
-      this.setState({paying: true, requesting: true})
-      const bill_to = {
-        first_name: 'Jon',
-        last_name:  'Doe',
-        address_1:  '123 Moltin Street',
-        city:       'Mountain View',
-        county:     'California',
-        country:    'US',
-        postcode:   'CA94040',
-        phone:      '6507123124'
-      }      
-      m('Cart.Complete', {gateway: 'stripe', bill_to: bill_to})
-        .then(order => {
-          return m('Checkout.Payment', 'purchase', order.id, {
-            data: {
-              first_name:   'John',
-              last_name:    'Doe',
-              number:       '4242424242424242',
-              expiry_month: '08',
-              expiry_year:  '2020',
-              cvv:          '123'
-            }
-          })
+    this.setState({paying: true, requesting: true})
+    const bill_to = {
+      first_name: 'Jon',
+      last_name:  'Doe',
+      address_1:  '123 Moltin Street',
+      city:       'Mountain View',
+      county:     'California',
+      country:    'US',
+      postcode:   'CA94040',
+      phone:      '6507123124'
+    }      
+    m('Cart.Complete', {gateway: 'stripe', bill_to: bill_to})
+      .then(order => {
+        return m('Checkout.Payment', 'purchase', order.id, {
+          data: {
+            first_name:   'John',
+            last_name:    'Doe',
+            number:       '4242424242424242',
+            expiry_month: '08',
+            expiry_year:  '2020',
+            cvv:          '123'
+          }
         })
-        .then(res => {
-          alert(res.message)
-          return m('Cart.Delete').then(res => {
-            if (this.willUnmount) return
-            this.setState({paying: false, requesting: false})
-            this.handleFetch()
-            
-          })
-        })
-        .catch(e => {
+      })
+      .then(res => {
+        alert(res.message)
+        return m('Cart.Delete').then(res => {
           if (this.willUnmount) return
-          alert(e.message || JSON.stringify(e))
           this.setState({paying: false, requesting: false})
+          this.handleFetch()
+          
         })
-    }
+      })
+      .catch(e => {
+        if (this.willUnmount) return
+        alert(e.message || JSON.stringify(e))
+        this.setState({paying: false, requesting: false})
+      })
   }
 
   render() {
@@ -135,7 +133,14 @@ class Cart extends Component {
     } else if (error) {
       contentComponent = <div>{error}</div>
     } else if (json.contents.length < 1){
-      contentComponent = <div style={{textAlign: 'center', padding: '20px'}}>Shopping cart is empty. Go buy something!</div>
+      contentComponent = (
+        <div style={{textAlign: 'center', padding: '20px'}}>Shopping cart is empty. <span style={{textDecoration: 'underline'}} 
+            onClick={() => {
+              this.props.router.transitionTo('/')
+            }}
+          >Go buy something</span>!
+        </div>
+      )
     }
 
     return (
