@@ -44,10 +44,12 @@ class Home extends Component {
   }
 
   componentDidMount() {
-
     m('Category.List', null)
       .then(category => {
         if (this.willUnmout) return
+        this.event = "orientationchange" in window ? "orientationchange":"resize"
+        window.addEventListener(this.event, this.handleResize)
+
         this.setState({
           fetching: false,
           height: window.innerHeight > window.innerWidth ? window.innerHeight : (768/0.8),
@@ -70,6 +72,11 @@ class Home extends Component {
 
   componentWillUnmount() {
     this.willUnmout = true
+    window.removeEventListener(this.event, this.handleResize)
+  }
+
+  handleResize = () => {
+    this.setState({height: window.innerHeight > window.innerWidth ? window.innerHeight : (768/0.8),})
   }
 
   // componentWillReceiveProps(nextProps) {}

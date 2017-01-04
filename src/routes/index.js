@@ -1,5 +1,19 @@
 import asyncLoad from './asyncLoad'
 
+// for test
+if (process.env.NODE_ENV === 'test') {
+  require.ensure = (deps, cb) => cb(require);
+  window.matchMedia = window.matchMedia || function() {
+    return {
+        matches : false,
+        addListener : function() {},
+        removeListener: function() {}
+    };
+  };
+  window.Moltin = function(){}
+}
+// for test end
+
 export const routes = [
   {
     name: 'pearl',
